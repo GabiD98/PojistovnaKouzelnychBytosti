@@ -1,0 +1,32 @@
+<div  class="col-md-9 mx-auto">
+    <h1>Přihlášení</h1>
+    <h5>Vítejte zpět! Zadejte své údaje a přihlašte se do svého účtu.</h5></br>
+    <div class="row justify-content-left">
+        <div class="d-flex justify-content-center col-md-3">
+            <img src="obrazky/klic.png" alt="Klíč" class="img-fluid" style="width: 200px; height: 150px; margin-bottom: 25px;"/>
+        </div>
+        <div class="d-flex justify-content-center col-md-3">
+            <form method="post" class="needs-validation col-md-12" novalidate id="prihlasovaciFormular">
+                <div>
+                    <h6><label for="uzivatelske_jmeno" class="mt-3">Uživatelské jméno </label></h6>
+                    <input type="text" name="uzivatelske_jmeno" class="form-control mb-2" id="uzivatelskeJmeno" value="<?= $uzivatelskeJmeno ?>" required/>
+                    <div class="invalid-feedback">Vyplňte uživatelské jméno</div>
+                </div>
+                <div>
+                    <h6><label for="heslo" class="mt-3"></label>Heslo</h6>
+                    <input type="password" name="heslo" class="form-control mb-2" id="heslo" required/>
+                    <div class="invalid-feedback">Zadejte heslo</div>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <button type="submit" class="btn tlacitko-info tlacitkoKontrola">Přihlásit</button>
+            </form>
+        </div>
+    </div>
+    <p>Pokud ještě nemáte účet, <a href="registrace">zaregistrujte se</a>.</p>
+</div>
+<script>
+    // Volání funkce validaceFormulare()
+    document.addEventListener('DOMContentLoaded', function() {
+        validaceFormulare();
+    });
+</script>

@@ -1,0 +1,215 @@
+<?php if (!$uzivatel) : ?>
+    <h1>Vítejte v naší aplikaci!</h1></br>
+    <div id="neprihlaseny" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#neprihlaseny" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#neprihlaseny" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#neprihlaseny" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="img-container d-flex justify-content-center align-items-center">
+                    <img src="obrazky/budova.jpg" class="d-block w-100" alt="budova">
+                </div>
+                <div class="carousel-caption d-none d-md-block text-white">
+                    <h5>Kdo jsme</h5>
+                    <p>Jsme první pojišťovna pro kouzelné bytosti na světě.</br>
+                        Pokud se něco nepovede, podáme vám pomocnou ruku.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/drak.jpeg" class="d-block w-100" alt="Drak">
+                <div class="carousel-caption d-none d-md-block text-white">
+                    <h5>Co děláme</h5>
+                    <p>Zprostředkováváme našim klientům nejrůznější typy pojištění.</br>
+                        Život je totiž plný překvapení a ne všechna jsou příjemná.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/klient.jpg" class="d-block w-100" alt="Klient">
+                <div class="carousel-caption d-none d-md-block text-white">
+                    <h5>Stovky spokojených klientů</h5>
+                    <p>Nenecháme nikoho ve štychu!</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#neprihlaseny" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Předchozí</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#neprihlaseny" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Další</span>
+        </button>
+    </div>
+    </br>
+    <div class="d-flex align-items-center justify-content-center">
+        <h3>Přidejte se k našim klientům i vy!</h3></br>
+    </div>
+    <div class="card-group text-center">
+        <div class="card border mx-3 my-2">
+            <div class="card-img-container d-flex justify-content-center align-items-center ">
+                <img class="card-img-top" src="obrazky/brk.png" alt="Brk" style="width: 300px; height: 300px; margin: 20px;">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Zapište se u nás</h4>
+                <p class="card-text">Prostřednictvím svého uživatelského účtu můžete spravovat svá pojištění.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-center border-0">
+                <a class="btn tlacitko-info" href="registrace">Registrovat</a>
+            </div>
+        </div>
+        <div class="card border mx-3 my-2">
+            <div class="card-img-container d-flex justify-content-center align-items-center">
+                <img class="card-img-top" src="obrazky/obracec.png" alt="Obracec_casu" style="width: 300px; height: 300px; margin: 20px;">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Vyberte si pojištění</h4>
+                <p class="card-text">Prohlédněte si seznam pojištění, která poskytujeme.</br>Myslete dopředu!</p>
+            </div>
+            <div class="card-footer d-flex justify-content-center border-0">
+                <a class="btn tlacitko-info" href="pojisteni">Vybrat pojištění</a>        
+            </div>
+        </div>
+        <div class="card border mx-3 my-2">
+            <div class="card-img-container d-flex justify-content-center align-items-center">
+                <img class="card-img-top" src="obrazky/koule.png" alt="Koule" style="width: 300px; height: 300px; margin: 20px;">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Máte dotazy?</h4>
+                <p class="card-text">Zanechte nám vzkaz prostřednictvím kontaktního formuláře. Jakmile to bude možné, ozveme se vám.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-center border-0">
+                <a class="btn tlacitko-info" href="kontakt">Zeptat se</a>
+            </div>
+        </div>
+    </div>
+    </br>
+<?php endif ?>
+<?php if ($uzivatel) : ?>
+    <div class="container">
+        <div class="row mt-2">
+            <div class=" col-md-12">
+                <div class="card" style="background-color: rgba(182,44,40,0.3);">
+                    <div class="card-body d-flex ">
+                        <div class="col-md-3 justify-content-start">
+                            <p>Jste přihlášeni jako <?= $uzivatelskeJmeno ?></p>
+                        </div>
+                        <?php if ($admin) : ?>
+                            <div class="col-md-6 d-flex flex-column align-items-center">                      
+                                <img src="obrazky/uzivatel_admin.png" alt="Admin" style="width: 15%;">
+                                <h1>Nástěnka administrátora</h1>                      
+                            </div>
+                        <?php else : ?>
+                            <div class="col-md-6 d-flex flex-column align-items-center">
+                                <img src="obrazky/uzivatel2.png" alt="Uživatel" style="width: 15%;">
+                                <h1>Nástěnka uživatele</h1>
+                            </div>
+                        <?php endif ?>
+                        <div class="col-md-3 d-flex justify-content-end">
+                            <p>Dnes je  <?= $dnes ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 d-flex flex-column">
+                <?php if ($admin) : ?>
+                    <div class="card mt-2" style="background-color: rgba(57,136,58,0.3);">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Založte nový účet pojištěnce</h4>
+                            <p class="card-text">Přeje si klient založit účet, ale brání mu v tom technické či jiné potíže?</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <a class="btn tlacitko-success" href="editor">Nový účet</a>        
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="card mt-2" style="background-color: rgba(57,136,58,0.3);">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Projděte seznam pojištěnců</h4>
+                            <p class="card-text">Potřebujete zjistit informace o konkrétním klientovi?</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <a class="btn tlacitko-success" href="pojistenci">Seznam pojištěnců</a>        
+                        </div>
+                    </div>
+                <?php endif ?>
+                <div class="card mt-2" style="background-color: rgba(249,170,34,0.3);">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Poraďte s výběrem pojištění</h4>
+                        <p class="card-text">Nemůže se klient rozhodnout, které pojištění zvolit?</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <a class="btn tlacitko-warning" href="pojisteni">Typy pojištění</a>
+                    </div>
+                </div>
+                <div class="card mt-2 flex-grow-1" style="background-color: rgba(182,44,40,0.3);">
+                    <div class="card-body">
+                        <h2 class="card-title">Důležité kontakty</h2>
+                        <ul class="card-text">
+                            <li>
+                                <strong>HR oddělení</strong></br>
+                                email: personalni@pojistovna.com</br>
+                                telefon: 164478952
+                            </li>
+                            <li>
+                                <strong>Technická podpora</strong></br>
+                                email: technici@pojistovna.com</br>
+                                telefon: 164478741
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-5 d-flex">
+                <div class="card mt-2 flex-grow-1" style="background-color: rgba(244,122,2,0.2);">
+                    <div class="card-body">
+                        <h2 class="card-title">Naše zásady </h2>
+                        <p>Jako každá společnost máme i my své zásady, kterými se řídí <strong>všichni naši členové</strong>.</p>
+                        <ol class="card-text">
+                            <li>
+                                <strong>Pečujeme o naše klienty jako o vlastní rodinu</strong>
+                                <p>Chceme pro naše klienty bezpečný a šťastný život a děláme vše, abychom toho společně dosáhli.</p>
+                            </li>
+                            <li>
+                                <strong>Respekt a úcta</strong>
+                                <p>Vůči klientům i kolegům přistupujeme s respektem a s úctou, kterou si každá živá bytost zaslouží.</p>
+                            </li>
+                            <li>
+                                <strong>Nepomlouváme se</strong>
+                                <p>Osobní problémy řešíme s tím, koho se to týká, případně s HR. Nikdy se s tím neobracíme na všechny okolo kromě dotyčného.</p>
+                            </li>
+                            <li>
+                                <strong>Time management</strong>
+                                <p>Pracovní den si organizujeme tak, abychom v klidu stihli splnit své úkoly. Určujme si priority. Nezapomínejme, že je důležité dát si chvíli pauzu a odpočinout si.</p>
+                            </li>
+                            <li>
+                                <strong>Nebojíme se říct si o pomoc</strong>
+                                <p>Máme-li s čímkoli potíže, požádáme kolegu nebo nadřízeného o pomoc. Nebudeme si přidělávat vrásky zbytečným stresem.</p>  
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="card mt-2 flex-grow-1" style="background-color: rgba(3,132,198,0.3);">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <img src="obrazky/klobouk.png" alt="Moudrý klobouk" class="img-fluid" style="width: 270px; height: 270px; margin-bottom: 25px;"/>
+                        </div>
+                        <h4 class="card-title">Přehled</h4>
+                        <div class="card-text">
+                            <p>Počet uživatelů: <?= $pocetUzivatelu ?> </p>
+                            <p>Z toho administrátorů: <?= $pocetAdminu ?> </p>
+                            <p>Počet registrovaných klientů: <?= $pocetPojistencu ?></p>
+                            <p>Z toho pojištěných klientů: <?= $pocetPojistenychPojistencu ?></p>
+                            <p>Počet sjednaných pojištění: <?= $pocetPojisteni ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif ?>

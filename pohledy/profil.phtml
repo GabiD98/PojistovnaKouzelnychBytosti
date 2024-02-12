@@ -1,0 +1,214 @@
+<div class="col-md-9 mx-auto">
+    <div class="container mt-3">
+        <h2>Vítejte ve svém profilu!</h2><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flip-card flip-card-profile mb-1 mt-1">
+                    <div class="flip-card-inner flip-card-inner-profile">
+                        <div class="flip-card-front flip-card-front-profile">
+                            <?php if (!$admin) : ?>
+                                <img src="obrazky/uzivatel2.png" alt="Uživatel" style="width: 100px; height:45px; margin: 60px 10px 20px 10px;"/>
+                            <?php endif ?>
+                            <?php if ($admin) : ?>
+                                <img src="obrazky/uzivatel_admin.png" alt="Admin" style="width: 100px; height:100px; margin: 60px 10px 20px 10px;"/>
+                            <?php endif ?>                            
+                            <h1><?= $uzivatelskeJmeno ?></h1>
+                            <?php if ($vek !== null && $vek !== date('Y')) : ?>
+                                <h5><?= $vek ?> let</h5>
+                            <?php endif ?>
+                            <?php if ($admin) : ?>
+                                <h6>Admin</h6>
+                            <?php endif ?>
+                        </div>
+                        <div class="flip-card-back flip-card-back-profile">
+                            <div class="row mt-5 m-2 justify-content-center">
+                                <h4>Jméno a příjmení</h4>
+                                <h5><?= $jmeno . " " . $prijmeni ?></h5>
+                            </div>
+                            <?php if ($datumNarozeni !== '0000-00-00') : ?>
+                                <div class="row m-2 justify-content-center">
+                                    <h5>Datum narození</h5>
+                                    <?= date('d.m.Y', strtotime($datumNarozeni)) ?>
+                                </div>
+                            <?php endif ?>
+                            <div class="row m-2 justify-content-center">
+                                <h5>Kontakt</h5>
+                                <?= $email ?></br>
+                                <?= $telefon ?></br>
+                            </div>
+                            <div class="row m-2 justify-content-center">
+                                <h5>Adresa</h5>
+                                <?= $adresa ?></br>
+                                <?= $mesto ?></br>
+                                <?= $psc ?></br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#osobniUdaje"><h6>Osobní údaje</h6></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#zmenaHesla"><h6>Změna hesla</h6></a>
+                        </li>
+                    </ul>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="osobniUdaje">
+                                <h4 class="mt-3">Osobní údaje</h4>
+                                <form method="post" class="needs-validation" novalidate id="profilFormular">
+                                    <input type="hidden" name="uzivatele_id" value="<?= $uzivateleId ?>" />
+                                    <div>
+                                        <div>
+                                            <h6><label for="jmenoUzivatele" class="mt-3">Jméno</label></h6>
+                                            <input type="text" name="jmeno" class="form-control" id="jmenoUzivatele" value="<?= $jmeno ?>" maxlength="60" required/>
+                                            <div class="invalid-feedback">Vyplňte křestní jméno</div>
+                                        </div>
+                                        <div>
+                                            <h6><label for="prijmeniUzivatele" class="mt-3">Příjmení</label></h6>
+                                            <input type="text" name="prijmeni" class="form-control" id="prijmeniUzivatele" value="<?= $prijmeni ?>" maxlength="60" required/>
+                                            <div class="invalid-feedback">Vyplňte příjmení</div>
+                                        </div>
+                                        <div>
+                                            <?php if ($uzivatel['datum_narozeni'] == "0000-00-00" || $uzivatel['datum_narozeni'] == "0") : ?>
+                                                <h6><label for="datumNarozeniUzivatele" class="mt-3 datum_narozeni">Datum narození</label></h6>
+                                                <input type="date" name="datum_narozeni" class="form-control" id="datumNarozeniUzivatele" value="<?= $datumNarozeni ?>" data-bs-toggle="tooltip" data-html="true" title="Datum narození po uložení nelze změnit" max="<?= date('Y-m-d') ?>" required/>
+                                                <div class="invalid-feedback">Vyplňte platné datum narození</div>
+                                            <?php endif ?>
+                                            <?php if ($uzivatel['datum_narozeni'] !== "0000-00-00" && $uzivatel['datum_narozeni'] !== "0") : ?>
+                                                <h6><label class="mt-3">Datum narození</label></h6>
+                                                <input type="date" name="datum_narozeni" class="form-control" id="datumNarozeniUzivateleDisabled" value="<?= $uzivatel['datum_narozeni'] ?>" disabled="disabled" data-bs-toggle="tooltip" data-html="true" title="Datum narození nelze změnit" />
+                                            <?php endif ?>
+                                        </div>
+                                        <div>
+                                            <h6><label for="emailUzivatele" class="mt-3">Emailová adresa</label></h6>
+                                            <input type="email" name="email" class="form-control" id="emailUzivatele" value="<?= $email ?>" placeholder="adresa@domena.com" autocomplete="off" required/>
+                                            <div class="invalid-feedback">Vyplňte emailovou adresu ve formátu adresa@domena.com</div>
+                                        </div>
+                                        <div>
+                                            <h6><label for="telefonUzivatele" class="mt-3">Telefonní číslo</label></h6>
+                                            <input type="tel" name="telefon" class="form-control" oninput="validovatCislo(this)" id="telefonUzivatele" value="<?= $telefon ?>" placeholder="600500400" maxlength="9" pattern="[0-9]{9}" required/>
+                                            <div class="invalid-feedback">Vyplňte telefonní číslo ve formátu 600500400</div>
+                                        </div>
+                                        <div>
+                                            <h6><label for="adresaUzivatele" class="mt-3">Adresa</label></h6>
+                                            <div>
+                                                <input type="text" name="adresa" class="form-control" id="adresaUzivatele" value="<?= $adresa ?>" placeholder="Ulice a číslo popisné" required/>
+                                                <div class="invalid-feedback">Vyplňte název ulice a číslo popisné</div>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="mestoUzivatele" class="form-control" id="mestoUzivatele" value="<?= $mesto ?>" placeholder="Město" required/>
+                                                <div class="invalid-feedback">Vyplňte město</div>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="pscUzivatele" class="form-control" id="pscUzivatele" oninput="validovatCislo(this)" value="<?= $psc ?>" placeholder="PSČ" maxlength="5" pattern="[0-9]{5}" required/>
+                                                <div class="invalid-feedback">Vyplňte celé PSČ</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center mt-3">
+                                            <button type="button" class="btn tlacitko-info tlacitkoKontrola" id="tlacitkoKontrola">
+                                                Uložit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal uloz" id="ulozUdaje">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Potvrzení úpravy</h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    Opravdu si přejete uložit tyto úpravy?
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn tlacitko-info" data-bs-dismiss="modal" >
+                                        Vrátit
+                                    </button>
+                                    <button type="submit" class="btn tlacitko-success tlacitkoPotvrdit" form="profilFormular">
+                                        Uložit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane container fade" id="zmenaHesla">
+                                <h4 class="mt-3">Změna hesla</h4>
+                                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate id="zmenaHeslaFormular">
+                                    <input type="hidden" name="uzivatele_id" value="<?= $uzivateleId ?>" />
+                                    <div>
+                                        <h6><label for="puvodniHeslo" class="mt-3">Původní heslo</label></h6>
+                                        <input type="password" name="puvodni_heslo" class="form-control mb-2" id="puvodniHeslo" required/>
+                                        <div class="invalid-feedback">Vyplňte původní heslo</div>
+                                    </div>
+                                    <div>
+                                        <h6><label for="noveHeslo" class="mt-3">Nové heslo</label></h6>
+                                        <input type="password" name="nove_heslo" class="form-control mb-2" id="noveHeslo" required/>
+                                        <div class="invalid-feedback">Vyplňte nové heslo</div>
+                                    </div>
+                                    <div>
+                                        <h6><label for="hesloZnovu" class="mt-3">Heslo znovu</label></h6>
+                                        <input type="password" name="heslo_znovu" class="form-control mb-2" id="hesloZnovu" required/>
+                                        <div class="invalid-feedback">Vyplňte nové heslo znovu pro ověření</div>
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <button type="button" class="btn tlacitko-info tlacitkoKontrola2">
+                                            Uložit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal uloz2" id="ulozHeslo">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Potvrzení úpravy</h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    Opravdu si přejete uložit nové heslo?
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn tlacitko-info" data-bs-dismiss="modal" >
+                                        Vrátit
+                                    </button>
+                                    <button type="submit" class="btn tlacitko-success tlacitkoPotvrdit2" form="zmenaHeslaFormular">
+                                        Uložit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Volání funkce validaceFormulare()
+    document.addEventListener('DOMContentLoaded', function () {
+        validaceFormulare();
+        
+        // Znemožnění odeslílání formuláře enterem, pokud není zvalidován
+        var formular = document.querySelector('form');
+        formular.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                if (!formular.checkValidity()) {
+                    event.preventDefault(); // Zabraňuje výchozímu chování klávesy Enter
+                    event.stopPropagation();
+                    formular.classList.add('was-validated');
+                }
+            }
+        });
+    });
+</script>

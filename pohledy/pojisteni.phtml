@@ -1,0 +1,452 @@
+<?php if (!$uzivatel) : ?>
+<div  class="col-md-9 mx-auto">
+    <h1>Naše pojištění</h1>
+    <div id="pojisteni" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#pojisteni" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#pojisteni" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#pojisteni" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#pojisteni" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#pojisteni" data-bs-slide-to="4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="img-container d-flex justify-content-center align-items-center">
+                    <img src="obrazky/pojisteni_urazove.jpg" class="d-block w-100" alt="Troll">
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Úrazové pojištění</h5>
+                    <p>Například útok trolla je nepříjemná věc.</br>
+                        Nenechte nic náhodě!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/pojisteni_duchodove.jpg" class="d-block w-100" alt="Duch">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Důchodové pojištění</h5>
+                    <p>Zabezpečte si pohodlné stáří.</br>
+                        Ani v důchodu nepatříte do starého železa!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/pojisteni_nemocenske.jpg" class="d-block w-100" alt="Nemocnice">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Nemocenske pojištění</h5>
+                    <p>Krátkodobá pracovní neschopnost může potkat kohokoli.</br>
+                        Nezoufejte, nenecháme vás živořit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/pojisteni_cestovni.jpg" class="d-block w-100" alt="Cestovani">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Cestovní pojištění</h5>
+                    <p>Cestujte s lehkou hlavou.</br>
+                        Zažívejte dobrodružství a případné nepříjemnosti nechte na nás.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="obrazky/pojisteni_havarijni.jpg" class="d-block w-100" alt="Let">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Havarijní pojištění</h5>
+                    <p>Stát se může cokoli.</br>
+                        Pomůžeme vám opět se vyšvihnout na koště, než bys řekl abrakadabra!</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#pojisteni" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Předchozí</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#pojisteni" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Další</span>
+        </button>
+    </div>
+    </br>
+    <h4>Zjistěte více</h4>
+    <ul class="list-unstyled">
+        <li>
+            <div id="urazovePojisteni" class="col-12">
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#popisUrazove">
+                            <h5 class="mt-0 mb-1 text-start"><img src="obrazky/pojisteni_urazove_ikona.png" alt="Úrazové pojištění" style="width: 46px; height: 46px;">Úrazové pojištění</h5>
+                        </a>
+                    </div>
+                    <div id="popisUrazove" class="collapse" data-bs-parent="#urazovePojisteni">
+                        <div  class="card-body p-3">
+                            <p>Opatrnosti není nikdy dost. I ty nejobezřetnější z nás ale někdy může potkat nepříjemnost v podobě zranění. Ať už se jedná o výbuch kotlíku nebo pád z koštěte, poskytneme vám krytí a náhrady podle potřeby.</p>
+                            <div id="urazove">
+                                <div class="card mb-2">
+                                    <div class="card-header col-12">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseUrazoveOblasti">
+                                            Na které oblasti lze uplatnit úrazové pojištění?
+                                        </a>
+                                    </div>
+                                    <div id="collapseUrazoveOblasti" class="collapse" data-bs-parent="#urazove">
+                                        <div class="card-body">
+                                            Pojištění můžete uplatnit například na:
+                                            <ul>
+                                                <li><strong>Léčebné náklady</strong> - úrazové pojištění může pokrýt náklady spojené s léčbou v nemocnici nebo u léčitele v souvislosti s úrazem. To může zahrnovat náklady na operace, hospitalizaci, lektvary a další léčebné postupy.</li>
+                                                <li><strong>Rehabilitace</strong>- pokud je pro zotavení nezbytná rehabilitace či fyzioterapie, může pojištění pokrýt i tyto výlohy.</li>
+                                                <li><strong>Příjmová náhrada</strong> - pokud vám úraz a rekonvalescence brání ve výkonu povolání, postaráme se, abyste nestrádali.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card col-12">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseUrazoveKomu">
+                                            Pro koho je úrazové pojištění vhodné?
+                                        </a>
+                                    </div>
+                                    <div id="collapseUrazoveKomu" class="collapse" data-bs-parent="#urazove">
+                                        <div class="card-body">
+                                            Úrazové pojištění je pro vás vhodné, jestliže:
+                                            <ul>
+                                                <li>vykonáváte <strong>rizikové povolání</strong> - například pokud je součástí vaší práce cestování na koštěti, drezura draků, alchymistické experimenty nebo vybírání daní,</li>
+                                                <li>jste <strong>dobrodruh,</strong></li>
+                                                <li>provozujete <strong>extrémní sporty,</strong></li>
+                                                <li><strong>neotevřete ani konzervu</strong>, aniž byste si způsobili popáleniny prvního stupně,</li>
+                                                <li>zkrátka <strong>cítíte, že ho potřebujete.</strong></li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div id="duchodovePojisteni" class="col-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#popisDuchodove">
+                            <h5 class="mt-0 mb-1"><img src="obrazky/pojisteni_duchodove_ikona.png" alt="Důchodové pojištění" style="width: 40px; height: 40px; margin: 0 15px 0 0;">Důchodové pojištění</h5>
+                        </a>
+                    </div>
+                    <div id="popisDuchodove" class="collapse" data-bs-parent="#duchodovePojisteni">
+                        <div class="card-body p-3">
+                            <p>Těšíte se na zasloužený odpočinek a hodláte si ho náležitě užít? Naše důchodové pojištění vám s tím pomůže. Zapomeňte na starosti a těšte se na další kouzelné zážitky!</p>
+                            <div id="duchodove">
+                                <div class="card mb-2">
+                                    <div class="card-header col-12">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseDuchodoveOblasti">
+                                            Na které oblasti lze uplatnit důchodové pojištění?
+                                        </a>
+                                    </div>
+                                    <div id="collapseDuchodoveOblasti" class="collapse" data-bs-parent="#duchodove">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><strong>Penze a renta</strong> - důchodové pojištění může poskytovat penze nebo renty, které jsou pravidelnými platbami, poskytujícími pravidelný příjem během důchodového věku.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseDuchodoveKomu">
+                                            Pro koho je důchodové pojištění vhodné?
+                                        </a>
+                                    </div>
+                                    <div id="collapseDuchodoveKomu" class="collapse" data-bs-parent="#duchodove">
+                                        <div class="card-body">
+                                            Důchodové pojištění je pro vás vhodné, jestliže:
+                                            <ul>
+                                                <li>chcete <strong>zvýšit úroveň komfortu</strong> svému budoucímu Já,</li>
+                                                <li>máte obavy, že si na stáří <strong>nenašetříte dostatečné jmění,</strong></li>
+                                                <li>se to chystáte na stará kolena <strong>pořádně roztočit.</strong></li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div id="nemocenskePojisteni" class="col-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#popisNemocenske">
+                            <h5 class="mt-0 mb-1"><img src="obrazky/pojisteni_nemocenske_ikona.png" alt="Nemocenské pojištění" style="width: 40px; height: 40px; margin: 0 15px 0 0;">Nemocenské pojištění</h5>
+                        </a>
+                    </div>
+                    <div id="popisNemocenske" class="collapse" data-bs-parent="#nemocenskePojisteni">
+                        <div class="card-body p-3">
+                            <p>Pokud vám často nedá spát obava, že kvůli dočasné pracovní neschopnosti přijdete o všechny úspory, nedejbože o střechu nad hlavou, zpozorněte. Toto pojištění vám kryje záda.</p>
+                            <div id="nemocenske">
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseNemocenskeOblasti">
+                                            Na které oblasti lze uplatnit nemocenské pojištění?
+                                        </a>
+                                    </div>
+                                    <div id="collapseNemocenskeOblasti" class="collapse" data-bs-parent="#nemocenske">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><strong>Náhrada příjmu</strong> - nemocenské pojištění může poskytovat náhradu za ztracený příjem během doby pracovní neschopnosti způsobené nemocí nebo úrazem. Tato náhrada může být poskytována buď jako procento plné mzdy, nebo jako pevná částka.</li>
+                                                <li><strong>Ochrana příjmu rodiny</strong> - poskytujeme finanční pomoc celé rodině, pokud je pojištěná osoba pracovně neschopná.</li>
+                                                <li><strong>Léčebné náklady</strong> - to zahrnuje náklady na lektvary, návštěvy léčitele, hospitalizaci a další léčebné procedury.</li>
+                                                <li><strong>Rehabilitace</strong> - pojištění zahrnuje i náklady na rehabilitaci nebo fyzioterapii, která je nezbytná pro zotavení a návrat do pracovního procesu.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseNemocenskeKomu">
+                                            Pro koho je nemocenské pojištění vhodné?
+                                        </a>
+                                    </div>
+                                    <div id="collapseNemocenskeKomu" class="collapse" data-bs-parent="#nemocenske">
+                                        <div class="card-body">
+                                            Nemocenské pojištění je pro vás vhodné, jestliže:
+                                            <ul>
+                                                <li>jste <strong>hlavním živitelem vaší rodiny/klanu/smečky</strong>,</li>
+                                                <li>nemáte <strong>dostatečné úspory</strong>, které by vás zabezpečily v době pracovní neschopnosti,</li>
+                                                <li>vykonáváte <strong>rizikové povolání</strong> - například pokud je součástí vaší práce lovení upírů, socializace obrů, testování magických artefaktů nebo sběr jablek,</li>
+                                                <li>vám vědma předpověděla <strong>hrozné neštěstí,</strong></li>
+                                                <li>jste <strong>zvyklí myslet dopředu.</strong></li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </li>
+        <li>
+            <div id="cestovniPojisteni" class="col-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#popisCestovni">
+                            <h5 class="mt-0 mb-1"><img src="obrazky/pojisteni_cestovni_ikona.png" alt="Cestovní pojištění" style="width: 40px; height: 40px; margin: 0 15px 0 0;">Cestovní pojištění</h5>
+                        </a>
+                    </div>
+                    <div id="popisCestovni" class="collapse" data-bs-parent="#cestovniPojisteni">
+                        <div class="card-body p-3">
+                            <p>Vyrážíte na cestu za dobrodružstvím? Nenechte si ji pokazit! V záloze totiž vždy číhá na svou příležitost nějaká veliká nepříjemnost, se kterou si ale hravě poradí naše cestovní pojištění.</p>
+                            <div id="cestovni">
+                                <div class="card mb-2">
+                                    <div class="card-header col-12">
+
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseCestovniOblasti">
+                                            Na které oblasti lze uplatnit cestovní pojištění?
+                                        </a>
+                                    </div>
+                                    <div id="collapseCestovniOblasti" class="collapse" data-bs-parent="#cestovni">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><strong>Zdravotní péče</strong> - v případě nemoci nebo úrazu během cesty vám cestovní pojištění pokryje léčebné náklady. To zahrnuje náklady na lektvary, první pomoc, hospitalizaci a další zdravotní služby.</li>
+                                                <li><strong>Ztráta zavazadel</strong> - cestovní pojištění poskytuje krytí pro případ ztráty, poškození nebo odcizení zavazadel během cesty. </br> 
+                                                    <strong class="text-danger">POZOR:</strong> pokud se jedná o zeměplošské Zavazadlo, nemůžeme za nic ručit!</li>
+                                                <li><strong>Náklady na návrat</strong> - pokud vás potká nemoc či zraněné a nemůžete pokračovat v plánované cestě, cestovní pojištění pokryje náklady na váš návrat domů nebo na léčbu v domovské zemi.</li>
+                                                <li><strong>Zpožděný příjezd nebo ztráta pobytu</strong> - pokud se vám nepovede dostat se do cíle včas nebo se někde zaseknete, cestovní pojištění zajistí náhradu za náklady spojené s tímto zpožděním.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseCestovniKomu">
+                                            Pro koho je cestovní pojištění vhodné?
+                                        </a>
+                                    </div>
+                                    <div id="collapseCestovniKomu" class="collapse" data-bs-parent="#cestovni">
+                                        <div class="card-body">
+                                            <p>Cestovní pojištění je pro vás vhodné, jestliže:</p>
+                                            <ul>
+                                                <li>podnikáte <strong>výpravu s riskantním průběhem či závěrem</strong>,</li>
+                                                <li><strong>jedete na dovolenou</strong> a chcete ji prožít <strong>bezstarostně</strong>,</li>
+                                                <li><strong>neuhlídáte ani sáček od čaje</strong>, natož zavazadlo na přeplněném nádraží,</li>
+                                                <li>se prostě a jednoduše <strong>chystáte někam vyrazit</strong> a nevíte, jak to ve světě chodí.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div id="havarijniPojisteni" class="col-12">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#popisHavarijni">
+                            <h5 class="mt-0 mb-1"><img src="obrazky/pojisteni_havarijni_ikona.png" alt="Havarijní pojištění" style="width: 40px; height: 40px; margin: 0 15px 0 0;">Havarijní pojištění</h5>
+                        </a>
+                    </div>
+                    <div id="popisHavarijni" class="collapse" data-bs-parent="#havarijniPojisteni">
+                        <div class="card-body p-3">
+                            <p>Vyrážíte na cestu za dobrodružstvím? Nenechte si ji pokazit! V záloze totiž vždy číhá na svou příležitost nějaká veliká nepříjemnost, se kterou si ale hravě poradí naše cestovní pojištění.</p>
+                            <div id="havarijni">
+                                <div class="card mb-2">
+                                    <div class="card-header col-12">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseHavarijniOblasti">
+                                            Na které oblasti lze uplatnit havarijní pojištění?
+                                        </a>
+                                    </div>
+                                    <div id="collapseHavarijniOblasti" class="collapse" data-bs-parent="#havarijni">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><strong>Dopravní nehody</strong> - havarijní pojištění poskytuje krytí pro škody na dopravním prostředku v případě dopravní nehody. To může zahrnovat opravy nebo nahrazení poškozených částí.</li>
+                                                <li><strong>Poškození způsobené katastrofami</strong> (přírodními i chodícími) - dojde-li k poškození vašeho dopravního prostředku, havarijní pojištění vám pomůže uvést ho opět do původního stavu nebo získat nové.</li>
+                                                <li><strong>Krádež</strong> - v případě, že je váš dopravní prostředek odcizen, pokryje havarijní pojištění náklady s tímto spojené.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-header">
+                                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseHavarijniKomu">
+                                            Pro koho je havarijní pojištění vhodné?
+                                        </a>
+                                    </div>
+                                    <div id="collapseHavarijniKomu" class="collapse" data-bs-parent="#havarijni">
+                                        <div class="card-body">
+                                            Havarijní pojištění je pro vás vhodné, jestliže:
+                                            <ul>
+                                                <li>jste <strong> vlastník dopravního prostředku</strong> jako je například koště, kočár nebo kouzelný cestovní plášť,</li>
+                                                <li>jste <strong>řidič/letec/plavec začátečník</strong>.</li>
+                                            </ul>                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <h3 class="text-center mt-5">Nepodařilo se vám najít vhodné pojištění? <a href="kontakt"  target="_blank">Napište nám</a>! </br>Společně se na to podíváme a rádi vám sestavíme pojištění na míru.</h3></br>
+<div  class="col-md-9 mx-auto">
+<?php endif ?>
+
+<?php if ($uzivatel) : ?>
+    <h1>Poraďte našim klientům s výběrem pojištění</h1>
+    <h5>Nastudujte si naši aktuální nabídku a zvolte pojištění, které je pro klienta nejvhodnější.</h5>
+
+    <div class="container mt-4">
+        <div class="d-flex flex-wrap justify-content-center">
+            <div class="flip-card mb-4 mx-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="obrazky/pojisteni_urazove.jpg" alt="Úrazové pojištění" class="mb-3"  style="width: 400px; height:225px;">
+                        <h1>Úrazové pojištění</h1>
+                        <h5>pro podporu při zranění</h5>
+                        <p>Pomozme našim klientům, aby na to nebyli sami.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="obrazky/pojisteni_urazove_ikona.png" alt="Úrazové pojištění" class="mt-5" style="width: 80px; height:80px;"/>
+                        <div class="mx-4 my-4">
+                            <h3>Komu doporučit:</h3>
+                            <ul class="text-start">
+                                <li>bytosti s rizikovým povoláním</li>
+                                <li>dobrodruhovi</li>
+                                <li>sportovci</li>
+                                <li>dětem a mláďatům</li>
+                                <li>snadno zranitelným a křehkým bytostem</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card mb-4 mx-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="obrazky/pojisteni_duchodove.jpg" alt="Důchodové pojištění" class="mb-3"  style="width: 400px; height:225px;">
+                        <h1>Důchodové pojištění</h1>
+                        <h5>pro důstojné stáří</h5>
+                        <p>Postarejme se, aby bylo dopřáno i našim klientům.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="mx-4 my-4">
+                            <img src="obrazky/pojisteni_duchodove_ikona.png" alt="Důchodové pojištění" class="mt-5" style="width: 80px; height:80px;"/>
+                            <h3>Komu doporučit:</h3>
+                            <ul class="text-start">
+                                <li>bytosti s nejistými příjmy</li>
+                                <li>každému, kdo se chce mít ve stáří dobře</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card mb-4 mx-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="obrazky/pojisteni_nemocenske.jpg" alt="Nemocenské pojištění" class="mb-3"  style="width: 400px; height:225px;">
+                        <h1>Nemocenské pojištění</h1>
+                        <h5>pro nečekané potíže</h5>
+                        <p>Zajistěme našim klientům klidnější rekonvalescenci.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="mx-4 my-4">
+                            <img src="obrazky/pojisteni_nemocenske_ikona.png" alt="Nemocenské pojištění" class="mt-5" style="width: 80px; height:80px;"/>
+                            <h3>Komu doporučit:</h3>
+                            <ul class="text-start">
+                                <li>bytosti, která nemá dostatek úspor</li>
+                                <li>osaměle žijící bytosti</li>
+                                <li>hlavě rodiny/klanu/smečky</li>
+                                <li>komukoli, kdo pracuje na volné noze</li>
+                                <li>snadno zranitelným a křehkým bytostem</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card mb-4 mx-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="obrazky/pojisteni_cestovni.jpg" alt="Cestovní pojištění" class="mb-3"  style="width: 400px; height:225px;">
+                        <h1>Cestovní pojištění</h1>
+                        <h5>pro cestování plné dobrodružství</h5>
+                        <p>Chraňme naše klienty před pokaženými zážitky z cest.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="mx-4 my-4">
+                            <img src="obrazky/pojisteni_cestovni_ikona.png" alt="Cestovní pojištění" class="mt-5" style="width: 80px; height:80px;"/>
+                            <h3>Komu doporučit:</h3>
+                            <ul class="text-start">
+                                <li>každému, kdo se chystá na delší cestu</li>
+                                <li>rodině/smečce s dětmi/mláďaty</li>
+                                <li>dobrodruhovi</li>
+                                <li>lupiči/Hobitovi</li>
+                                <li>starším a křehčím bytostem</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card mb-4 mx-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="obrazky/pojisteni_havarijni.jpg" alt="Havarijní pojištění" class="mb-3"  style="width: 400px; height:225px;">
+                        <h1>Havarijní pojištění</h1>
+                        <h5>pro pomoc při poškození prostředku</h5>
+                        <p>Podejme našim klientům pomocnou ruku.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="mx-4 my-4">
+                            <img src="obrazky/pojisteni_havarijni_ikona.png" alt="Havarijní pojištění" class="mt-5" style="width: 80px; height:80px;"/>
+                            <h3>Komu doporučit:</h3>
+                            <ul class="text-start">
+                                <li>majiteli jakéhokoli dopravního prostředku</li>
+                                <li>řidiči/letci/plavci začátečníkovi</li>
+                                <li>bytosti žijící v oblasti s vysokým rizikem nehod</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>pohledy/pojisteni.phtml</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="OOP">
+            <file>file:/C:/xampp/htdocs/Pojisteni/kontrolery/SmerovacKontroler.php</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/index.php</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/rozlozeni.phtml</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/kontrolery/Kontroler.php</file>
+        </group>
+        <group name="Projekt">
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/rozlozeni.phtml</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/pojistenci.phtml</file>
+        </group>
+        <group name="Pojisteni">
+            <file>file:/C:/xampp/htdocs/Pojisteni/kontrolery/PojistenecKontroler.php</file>
+        </group>
+    </open-files>
+</project-private>

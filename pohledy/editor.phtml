@@ -1,0 +1,109 @@
+<h1>Editor pojištěnců</h1>
+<?php if (isset($pojistenecId) && $pojistenecId) : ?>
+    <h5>Upravte osobní údaje pojištěnce <?= $jmeno . " " . $prijmeni ?> </h5><br>
+<?php endif ?>
+<?php if (!isset($pojistenecId) || !$pojistenecId) : ?>
+    <h5>Založte nový účet pojištěnce</h5><br>
+<?php endif ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="obrazky/hulka.png" alt="Hůlka" class="img-fluid" style="width: 300px; height: 300px; margin-bottom: 25px;"/>
+        </div>
+        <div class="col-md-9">
+            <form method="post" class="needs-validation" novalidate id="editacniFormular">
+                <div class="row">
+                    <div class="col-md-3 mx-3">
+                        <input type="hidden" name="pojistenci_id" value="<?= $pojistenecId ?>" />
+                        <h5>Jméno a datum narození</h5>
+                        <div>
+                            <input type="text" name="jmeno" class="form-control mt-1" id="jmenoPojistence" value="<?= $jmeno ?>" placeholder="Křestní jméno" maxlength="60" required/>
+                            <div class="invalid-feedback">Vyplňte křestní jméno</div>
+                        </div>
+                        <div>
+                            <input type="text" name="prijmeni" class="form-control mt-1" id="prijmeniPojistence" value="<?= $prijmeni ?>" placeholder="Příjmení" maxlength="60" required/>
+                            <div class="invalid-feedback">Vyplňte příjmení</div>
+                        </div>
+                        <div>
+                            <input type="date" name="datum_narozeni" class="form-control mt-1" id="datumNarozeniPojistence" value="<?= $datumNarozeni ?>" max="<?= date('Y-m-d') ?>" onblur="validovatDatumNarozeni(this)" required/>
+                            <div class="invalid-feedback">Vyplňte platné datum narození</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mx-3">
+                        <h5>Kontakt</h5><br>
+                        <div>
+                            <input type="email" name="email" class="form-control mt-1" id="emailPojistence" value="<?= $email ?>" placeholder="Emailová adresa" autocomplete="off" required/>
+                            <div class="invalid-feedback">Vyplňte emailovou adresu ve formátu adresa@domena.com</div>
+                        </div>
+                        <div>
+                            <input type="tel" name="telefon" class="form-control mt-1" oninput="validovatCislo(this)" id="telefonPojistence" value="<?= $telefon ?>" placeholder="Telefon" maxlength="9" pattern="[0-9]{9}" required/>
+                            <div class="invalid-feedback">Vyplňte telefonní číslo ve formátu 600500400</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mx-3">
+                        <h5>Adresa</h5><br>
+                        <div>
+                            <input type="text" name="adresa" class="form-control mt-1" id="adresaPojistence" value="<?= $adresa ?>" placeholder="Ulice a číslo popisné" required/>
+                            <div class="invalid-feedback">Vyplňte název ulice a číslo popisné</div>
+                        </div>
+                        <div>
+                            <input type="text" name="mesto" class="form-control mt-1" id="mestoPojistence" value="<?= $mesto ?>" placeholder="Město" required/>
+                            <div class="invalid-feedback">Vyplňte město</div>
+                        </div>
+                        <div>
+                            <input type="text" name="psc" class="form-control mt-1" oninput="validovatCislo(this)" id="pscPojistence" value="<?= $psc ?>" placeholder="PSČ" maxlength="5" pattern="[0-9]{5}" required/>
+                            <div class="invalid-feedback">Vyplňte PSČ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 mx-5 d-flex justify-content-center">
+                        <!-- Tlačítko pro kontrolu -->
+                        <button type="button" class="btn tlacitko-info tlacitkoKontrola">
+                            Uložit pojištěnce
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modální dialog pro potvrzení uložení -->
+<div class="modal uloz" id="ulozPojistence">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Potvrzení úpravy</h4>
+            </div>
+            <div class="modal-body text-center">
+                Opravdu si přejete uložit tyto úpravy?
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn tlacitko-info tlacitkoVratit" data-bs-dismiss="modal">
+                    Vrátit
+                </button>
+                <button type="submit" class="btn tlacitko-success tlacitkoPotvrdit" form="editacniFormular">
+                    Uložit pojištěnce
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Volání funkce validaceFormulare()
+    document.addEventListener('DOMContentLoaded', function () {
+        validaceFormulare();
+
+        // Znemožnění odeslílání formuláře enterem, pokud není zvalidován
+        var formular = document.querySelector('form');
+        formular.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                if (!formular.checkValidity()) {
+                    event.preventDefault(); // Zabraňuje výchozímu chování klávesy Enter
+                    event.stopPropagation();
+                    formular.classList.add('was-validated');
+                }
+            }
+        });
+    });
+</script>

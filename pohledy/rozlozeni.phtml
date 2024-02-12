@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+    <head>
+        <base href="/pojisteni.localhost" />
+        <meta charset="UTF-8" />
+        <title><?= $titulek ?></title>
+        <meta name="viewport" content="width=device-width, viewport-fit=cover"/>
+        <meta name="description" content="<?= $popis ?>" />
+        <meta name="keywords" content="<?= $klicovaSlova ?>" />
+        <meta name="author" content="Gábi" />
+        <link rel="shortcut icon" href="obrazky/ikona.ico" />
+        <script src="../bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="../bootstrap.min.css"/>
+        <link rel="stylesheet" href="../style.css" type="text/css"/>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="custom-cursor"></div>
+        <header>
+            <div>
+                <?php foreach ($zpravy as $zprava) : ?>
+                    <?php foreach ($zprava as $klic => $text) : ?>
+                        <p class="zprava-<?= $klic ?>"><?= $text ?></p>
+                    <?php endforeach ?>
+                <?php endforeach ?>
+            </div>
+            <nav class="navbar navbar-expand-md border-bottom container-fluid ">
+                <div>
+                    <a class = "navbar-brand" href = "uvod"/>
+                    <img src="obrazky/logo.png"  class="d-inline-block align-top float-start" width="80" height="80" alt="koule" />
+                    <h1 class="float-start">Pojišťovna</h1>
+                    <small class="float-start">pro kouzelné bytosti</small>
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#obsah-navigacni-listy" aria-controls="obsah-navigacni-listy" aria-expanded="false" aria-label="Rozbalit navigaci">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container-fluid">
+                    <div class="d-flex flex-row g-0 col-9">
+                        <ul class="nav navbar-expand-md navbar-light">
+                            <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "uvod">Homepage</a></li>
+                            <?php if ($uzivatel) : ?>
+                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "pojistenci">Pojištěnci</a></li>
+                            <?php endif ?>
+                            <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "pojisteni">Pojištění</a></li>
+                            <?php if (!$uzivatel) : ?>
+                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "kontakt">Kontakt</a></li>
+                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "faq">FAQ</a></li>
+                            <?php endif ?>
+                        </ul>
+                    </div>
+                    <div class = "d-flex flex-row-reverse col-3">
+                        <ul class = "nav navbar-expand-md navbar-light">
+                            <?php if (!$uzivatel) : ?>
+                                <li class="nav-item"><a class="nav-link btn tlacitko-warning" href="prihlaseni">Přihlásit</a></li>
+                                <li class="nav-item"><a class="nav-link btn tlacitko-success" href="registrace">Registrovat</a></li>
+                            <?php endif ?>
+                            <?php if ($uzivatel) : ?>
+                                <li class="nav-item"><a class="nav-link btn tlacitko-warning" href="profil">Profil</a></li>
+                                <li>
+                                    <button type="button" class="nav-link btn tlacitko-danger" data-bs-toggle="modal" data-bs-target="#odhlas">
+                                        Odhlásit
+                                    </button>
+                                    <div class="modal" id="odhlas">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Potvrzení odhlášení</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    Opravdu se chcete odhlásit?
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal" >
+                                                        Vrátit
+                                                    </button>
+                                                    <button type="button" class="btn tlacitko-danger" data-bs-dismiss="modal" >
+                                                        <a href="profil/odhlasit" style="color: white; text-decoration: none;">Odhlásit</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php endif ?> 
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <br clear = "both" />
+        </header>
+        <div class="container mx-auto flex-grow-1">
+            <article>
+                <?php $this->kontroler->vypisPohled();
+                ?>
+            </article>
+        </div>
+        <footer class="text-center mt-5 border-top">
+            <p>&copy; <?php echo($rok) ?> Pojištění pro kouzelné bytosti</p>
+        </footer>
+        <script src="../script.js" defer></script>
+    </body>
+</html>

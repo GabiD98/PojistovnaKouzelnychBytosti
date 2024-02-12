@@ -1,0 +1,60 @@
+<div class="col-md-9 mx-auto">
+    <h1>Registrace</h1>
+    <h5>Vytvořte si přístup do svého osobního účtu.</h5></br>
+    <div class="container-fluid">
+        <form method="post" class="needs-validation" novalidate id="registracniFormular">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="obrazky/brk.png" alt="Brk" class="img-fluid" style="width: 200px; height: 200px; margin-bottom: 25px;"/>
+                </div>
+                <div class=" col-md-4 mx-3">
+                    <div>
+                        <h6><label for="uzivatelske_jmeno" class="mt-3">Uživatelské jméno</label></h6>
+                        <input type="text" name="uzivatelske_jmeno" class="form-control mb-2" id="noveUzivatelskeJmeno" value="<?= $uzivatelskeJmeno ?>" placeholder="Přezdívka" required/>
+                        <div class="invalid-feedback">Vyplňte uživatelské jméno</div>
+                    </div>
+                    <div>
+                        <h6><label for="email" class="mt-3">Emailová adresa</label></h6>
+                        <input type="email" name="email" class="form-control mb-2" id="novyEmail" value="<?= $email ?>" placeholder="adresa@domena.com" autocomplete="off" required/>
+                        <div class="invalid-feedback">Vyplňte emailovou adresu ve formátu adresa@domena.com</div>
+                    </div>
+                    <div>
+                        <h6><label for="telefon" class="mt-3">Telefonní číslo</label></h6>
+                        <input type="tel" name="telefon" class="form-control mb-2" oninput="validovatCislo(this)" id="novyTelefon" value="<?= $telefon ?>" placeholder="600500400" maxlength="9" pattern="[0-9]{9}" required/>
+                        <div class="invalid-feedback">Vyplňte telefonní číslo ve formátu 600500400</div>
+                    </div>
+                </div>
+                <div class=" col-md-4 mx-3">
+                    <div>
+                        <h6><label for="heslo" class="mt-3">Heslo</label></h6>
+                        <input type="password" name="heslo" class="form-control mb-2" id="noveHeslo" minlength="5" required/>
+                        <div class="invalid-feedback">Heslo musí obsahovat minimálně pět znaků</div>
+                    </div>
+                    <div>
+                        <h6><label for="heslo_znovu" class="mt-3">Heslo znovu</label></h6>
+                        <input type="password" name="heslo_znovu" class="form-control mb-2" id="noveHesloZnovu" required/>
+                        <div class="invalid-feedback">Vyplňte heslo znovu pro ověření</div>
+                    </div>
+                    <div>
+                        <h6><label for="rok" class="mt-3">Zadejte aktuální rok</label></h6>
+                        <input type="text" name="rok" class="form-control mb-2" id="rokKontrola" value="<?= $rok ?>" required/>
+                        <div class="invalid-feedback">Zadejte aktuální rok</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-8">
+                <div class="d-flex justify-content-end">                
+                    <button type="submit" class="btn tlacitko-info tlacitkoKontrola">Registrovat</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p>Pokud už máte účet, <a href="prihlaseni">přihlašte se</a>.</p>
+</div>
+<script>
+    // Volání funkce validaceFormulare()
+    document.addEventListener('DOMContentLoaded', function() {
+        validaceFormulare();
+    });
+
+</script>
