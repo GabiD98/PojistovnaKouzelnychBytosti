@@ -1,23 +1,27 @@
 <h1>Seznam pojištěnců</h1>
-
-
-<?php if ($admin) : ?>
-    <div class="d-flex justify-content-center">
-        <a class="btn tlacitko-success" href="editor">Přidat nového pojištěnce</a>
-    </div>
-<?php endif ?>
 <br/>
-<form method="GET" action="">
-    <div class="row">
-        <label for="vyhledatFormular">Vyhledat podle jména:</label>
-        <div class="col-4">
-            <input type="text" class="form-control" id="vyhledatFormular" name="vyhledat" placeholder="Zadejte jméno">
-        </div>
-        <div class="col-4">
-            <button type="submit" class="btn tlacitko-info m-0">Vyhledat</button>
-        </div>
+<div class="row">
+    <div class="col-9">
+        <form method="GET" action="">
+            <div class="row">
+                <label for="vyhledatFormular">Vyhledat podle jména:</label>
+                <div class="col-4">
+                    <input type="text" class="form-control" id="vyhledatFormular" name="vyhledat" placeholder="Zadejte jméno">
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn tlacitko-info m-0">Vyhledat</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+    <div class="col-3 d-flex flex-column">
+        <?php if ($admin) : ?>
+            <div class="mt-auto">
+                <a class="btn tlacitko-success m-0" href="editor">Přidat nového pojištěnce</a>
+            </div>
+        <?php endif ?>
+    </div>
+</div>
 </br>
 <?php
 if (isset($_GET['vyhledat'])) {
