@@ -1,4 +1,3 @@
-
 // Kurzor myši - hůlka
 document.addEventListener('mousemove', function (event) {
     const cursor = document.querySelector('.custom-cursor');
@@ -20,6 +19,57 @@ function validovatCastku(input) {
         input.value = input.value.slice(0, 7);
     }
 }
+// Různé podmínky pro různá pojištění
+function podminkyPojisteni() {
+    // Nastavení různých hodnot výběrů pojištění 
+        var typPojisteniSelect = document.querySelector('select[name="typ_pojisteni"]');
+        var predmetPojisteniSelect = document.querySelector('select[name="predmet_pojisteni"]');
+        var frekvencePlatbySelect = document.querySelector('select[name="frekvence_platby"]');
+
+        typPojisteniSelect.addEventListener('change', function () {
+            var selectedValue = typPojisteniSelect.value;
+
+            // Nastavení možností frekvence platby v závislosti na vybraném typu pojištění
+            var frekvenceOptions = {
+                'Cestovní': ['Jednorázově', 'Měsíčně', 'Čtvrtletně', 'Ročně'],
+                'Úrazové': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
+                'Nemocenské': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
+                'Důchodové': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
+                'Havarijní': ['Měsíčně', 'Čtvrtletně', 'Ročně']
+            };
+
+            // Nastavení možností předmětu pojištění v závislosti na vybraném typu pojištění
+            var predmetOptions = {
+                'Cestovní': ['Pojištěnec', 'Příbuzný klienta'],
+                'Úrazové': ['Pojištěnec', 'Příbuzný klienta'],
+                'Nemocenské': ['Pojištěnec', 'Příbuzný klienta'],
+                'Důchodové': ['Pojištěnec'],
+                'Havarijní': ['Vozidlo', 'Nemovitost']
+            };
+
+            // Nastavení možností frekvence platby
+            frekvencePlatbySelect.innerHTML = '';
+            frekvenceOptions[selectedValue].forEach(function (optionValue) {
+                var option = document.createElement('option');
+                option.value = optionValue;
+                option.text = optionValue;
+                frekvencePlatbySelect.add(option);
+            });
+
+            // Nastavení možností předmětu pojištění
+            predmetPojisteniSelect.innerHTML = '';
+            predmetOptions[selectedValue].forEach(function (optionValue) {
+                var option = document.createElement('option');
+                option.value = optionValue;
+                option.text = optionValue;
+                predmetPojisteniSelect.add(option);
+            });
+        });
+
+        // Spuštění události change po načtení DOM
+        typPojisteniSelect.dispatchEvent(new Event('change'));
+}
+
 // Funkce pro validaci formulářů včetně validace data narození
 function validaceFormulare() {
     var tlacitkaKontroly = document.querySelectorAll('.tlacitkoKontrola');
@@ -55,5 +105,29 @@ function validaceFormulare() {
                 });
             }
         });
+    });
+}
+// Zakáže odeslání nezvalidovaného formuláře enterem
+function neodesilatEnterem() {
+    var formularOsobniUdaje = document.getElementById('profilFormular');
+    var formularZmenaHesla = document.getElementById('zmenaHeslaFormular');
+
+    formularOsobniUdaje.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            if (!formularOsobniUdaje.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                formularOsobniUdaje.classList.add('was-validated');
+            }
+        }
+    });
+    formularZmenaHesla.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            if (!formularZmenaHesla.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                formularZmenaHesla.classList.add('was-validated');
+            }
+        }
     });
 }
