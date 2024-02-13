@@ -6,31 +6,18 @@
  */
 class SmerovacKontroler extends Kontroler
 {
+    protected ?Kontroler $kontroler = null;
 
-    /**
-     * @var kontroler Instance Kontroleru
-     */
-    protected Kontroler $kontroler;
-
-    /**
-     * Naparsuje URL adresu a zjistí název třídy kontroleru
-     * @param array $parametry Pole, kde na prvním indexu bude URL adresa
-     * @return void
-     */
     public function zpracuj(array $parametry): void
     {
-        //Naparsuje URL adresu
         $naparsovanaURL = $this->parsujURL($parametry[0]);
 
-        //Přesměruje na úvodní článek, pokud první parametr URL chybí nebo je prázdný
         if (empty($naparsovanaURL[0])) {
             $this->presmeruj('uvod');
         }
 
-        //Zjistí název třídy kontroleru
         $tridaKontroleru = $this->pomlckyDoVelbloudiNotace(array_shift($naparsovanaURL)) . 'Kontroler';
 
-        //Pokud kontroler neexistuje, přesměruje na chybovou stránku
         if (file_exists('kontrolery/' . $tridaKontroleru . '.php')) {
             $this->kontroler = new $tridaKontroleru;
         } else {
@@ -38,25 +25,32 @@ class SmerovacKontroler extends Kontroler
             $this->presmeruj('uvod');
         }
 
-        //Volá kontroler
-        $this->kontroler->zpracuj($naparsovanaURL);
+        if ($this->kontroler) {
+            // Zjistí aktuální stránku z URL parametru
+            $stranka = isset($_GET['page']) ? $_GET['page'] : 1;
 
-        // Nastavení proměnných pro šablonu
-        $this->data['titulek'] = $this->kontroler->hlavicka['titulek'];
-        $this->data['popis'] = $this->kontroler->hlavicka['popis'];
-        $this->data['klicovaSlova'] = $this->kontroler->hlavicka['klicovaSlova'];
-        $this->data['zpravy'] = $this->vratZpravy();
-        $spravceUzivatelu = new SpravceUzivatelu();
-        $this->data['uzivatel'] = $spravceUzivatelu->jePrihlaseny();
-        $uzivatel = $spravceUzivatelu->vratUzivatele();
-        $this->data['admin'] = $uzivatel && $uzivatel['admin'];
+            // Předá aktuální stránku do načítaného kontroleru
+            $this->kontroler->zpracuj($naparsovanaURL, $stranka);
 
-        $rok = date("Y");
-        $this->data['rok'] = $rok;
+            // Nastavení proměnných pro šablonu
+            $this->data['titulek'] = $this->kontroler->hlavicka['titulek'];
+            $this->data['popis'] = $this->kontroler->hlavicka['popis'];
+            $this->data['klicovaSlova'] = $this->kontroler->hlavicka['klicovaSlova'];
+            $this->data['zpravy'] = $this->vratZpravy();
+            $spravceUzivatelu = new SpravceUzivatelu();
+            $this->data['uzivatel'] = $spravceUzivatelu->jePrihlaseny();
+            $uzivatel = $spravceUzivatelu->vratUzivatele();
+            $this->data['admin'] = $uzivatel && $uzivatel['admin'];
 
-        // Nastavení hlavní šablony
-        $this->pohled = 'rozlozeni';
+            $rok = date("Y");
+            $this->data['rok'] = $rok;
+
+            $this->pohled = 'rozlozeni';
+        } else {
+            // Handle case when controller is not initialized
+        }
     }
+
 
     /**
      * Naparsuje URL adresu a vrátí ji ve formě pole parametrů
