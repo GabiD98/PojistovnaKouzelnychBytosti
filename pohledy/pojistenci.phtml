@@ -1,11 +1,38 @@
 <h1>Seznam pojištěnců</h1>
+
+
 <?php if ($admin) : ?>
     <div class="d-flex justify-content-center">
         <a class="btn tlacitko-success" href="editor">Přidat nového pojištěnce</a>
     </div>
 <?php endif ?>
 <br/>
-<?php if ($pojistenci) : ?>
+<form method="GET" action="">
+    <div class="row">
+        <label for="vyhledatFormular">Vyhledat podle jména:</label>
+        <div class="col-4">
+            <input type="text" class="form-control" id="vyhledatFormular" name="vyhledat" placeholder="Zadejte jméno">
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn tlacitko-info m-0">Vyhledat</button>
+        </div>
+    </div>
+</form>
+</br>
+<?php
+if (isset($_GET['vyhledat'])) {
+    $vyhledat = $_GET['vyhledat'];
+    $filtered_pojistenci = array_filter($pojistenci, function ($pojistenec) use ($vyhledat) {
+        $jmeno = $pojistenec['jmeno'];
+        $prijmeni = $pojistenec['prijmeni'];
+        // Hledání jak v jméně, tak i v příjmení
+        return stripos($jmeno, $vyhledat) !== false || stripos($prijmeni, $vyhledat) !== false;
+    });
+} else {
+    $filtered_pojistenci = $pojistenci;
+}
+?>
+<?php if (!empty($filtered_pojistenci)) : ?>
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <th>Jméno a příjmení</th>
@@ -13,9 +40,8 @@
         <?php if ($admin) : ?>
             <th class="col-3">Úpravy</th>
         <?php endif ?>
-    </thead >
-    <?php foreach ($pojistenci as $pojistenec) : ?>
-
+    </thead>
+    <?php foreach ($filtered_pojistenci as $pojistenec) : ?>
         <tr>
             <td>
                 <h4 class="m-md-1"><a href="pojistenec/<?= $pojistenec['url'] ?>"><?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?></a></h4>
@@ -43,10 +69,10 @@
                                     Opravdu si přejete odstranit pojištěnce <?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?>?
                                 </div>
                                 <div class="modal-footer justify-content-center">
-                                    <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal" >
+                                    <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal">
                                         Vrátit
                                     </button>
-                                    <button type="button" class="btn tlacitko-danger" data-bs-dismiss="modal" >
+                                    <button type="button" class="btn tlacitko-danger">
                                         <a href="pojistenec/<?= $pojistenec['url'] ?>/odstranit" style="color: white; text-decoration: none;">Odstranit</a>
                                     </button>
                                 </div>
@@ -59,5 +85,5 @@
     <?php endforeach ?>
     </table>
 <?php else : ?>
-    <p>Zatím nejsou v databázi žádní pojištěnci.</p>
+    <p>Nebyly nalezeny žádné záznamy.</p>
 <?php endif ?>
