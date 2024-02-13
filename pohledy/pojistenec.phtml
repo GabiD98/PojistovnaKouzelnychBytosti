@@ -290,55 +290,7 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Nastavení různých hodnot výběrů pojištění 
-        var typPojisteniSelect = document.querySelector('select[name="typ_pojisteni"]');
-        var predmetPojisteniSelect = document.querySelector('select[name="predmet_pojisteni"]');
-        var frekvencePlatbySelect = document.querySelector('select[name="frekvence_platby"]');
-
-        typPojisteniSelect.addEventListener('change', function () {
-            var selectedValue = typPojisteniSelect.value;
-
-            // Nastavení možností frekvence platby v závislosti na vybraném typu pojištění
-            var frekvenceOptions = {
-                'Cestovní': ['Jednorázově', 'Měsíčně', 'Čtvrtletně', 'Ročně'],
-                'Úrazové': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
-                'Nemocenské': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
-                'Důchodové': ['Měsíčně', 'Čtvrtletně', 'Ročně'],
-                'Havarijní': ['Měsíčně', 'Čtvrtletně', 'Ročně']
-            };
-
-            // Nastavení možností předmětu pojištění v závislosti na vybraném typu pojištění
-            var predmetOptions = {
-                'Cestovní': ['Pojištěnec', 'Příbuzný klienta'],
-                'Úrazové': ['Pojištěnec', 'Příbuzný klienta'],
-                'Nemocenské': ['Pojištěnec', 'Příbuzný klienta'],
-                'Důchodové': ['Pojištěnec'],
-                'Havarijní': ['Vozidlo', 'Nemovitost']
-            };
-
-            // Nastavení možností frekvence platby
-            frekvencePlatbySelect.innerHTML = '';
-            frekvenceOptions[selectedValue].forEach(function (optionValue) {
-                var option = document.createElement('option');
-                option.value = optionValue;
-                option.text = optionValue;
-                frekvencePlatbySelect.add(option);
-            });
-
-            // Nastavení možností předmětu pojištění
-            predmetPojisteniSelect.innerHTML = '';
-            predmetOptions[selectedValue].forEach(function (optionValue) {
-                var option = document.createElement('option');
-                option.value = optionValue;
-                option.text = optionValue;
-                predmetPojisteniSelect.add(option);
-            });
-        });
-
-        // Spuštění události change po načtení DOM
-        typPojisteniSelect.dispatchEvent(new Event('change'));
-
-        // Volání funkce validaceFormulare()
+        podminkyPojisteni();
         validaceFormulare();
     });
 </script>
