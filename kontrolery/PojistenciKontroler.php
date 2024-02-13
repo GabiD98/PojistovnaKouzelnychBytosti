@@ -16,11 +16,32 @@ class PojistenciKontroler extends Kontroler
 
         // Pojištěnce vidí jen přihlášení uživatelé
         $this->overUzivatele();
-        
+
         // Hlavička stránky
         $this->hlavicka['titulek'] = 'Seznam pojištěnců';
         $this->hlavicka['popis'] = 'Seznam všech pojištěnců';
         $this->hlavicka['klicovaSlova'] = 'pojištěnci';
+
+        // Vytvoření instance modelu, který nám umožní pracovat s pojištěnci
+        $spravcePojistencu = new SpravcePojistencu();
+
+        // Definice počtu položek na stránku
+        $polozekNaStranku = 10;
+
+        // Zjistíme aktuální stránku
+        $stranka = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+
+        // Získáme celkový počet pojištěnců
+        $pocetPojistencu = $spravcePojistencu->vratPocetPojistencu();
+
+        // Vypočítáme celkový počet stránek
+        $pocetStranek = ceil($pocetPojistencu / $polozekNaStranku);
+
+        // Omezení pro offset
+        $offset = ($stranka - 1) * $polozekNaStranku;
+
+        // Získání pojištěnců pro aktuální stránku
+        $pojistenci = $spravcePojistencu->vratVsechnyPojistence($offset, $polozekNaStranku);
 
         // Vytvoření instance modelu, který nám umožní pracovat s uživatelem
         $spravceUzivatelu = new SpravceUzivatelu();
@@ -28,8 +49,6 @@ class PojistenciKontroler extends Kontroler
         $this->overUzivatele();
         // Ověří, zda je uživatel zároveň administrátor
         $uzivatel = $spravceUzivatelu->vratUzivatele();
-        // Vytvoření instance modelu, který nám umožní pracovat s pojištěnci
-        $spravcePojistencu = new SpravcePojistencu();
 
         // Naplnění proměnných pro šablonu
         $pojistenci = $spravcePojistencu->vratVsechnyPojistence();
@@ -38,6 +57,8 @@ class PojistenciKontroler extends Kontroler
         }
         $this->data['admin'] = $uzivatel && $uzivatel['admin'];
         $this->data['pojistenci'] = $pojistenci;
+        $this->data['pocetStranek'] = $pocetStranek;
+        $this->data['aktualniStranka'] = $stranka;
 
         // Nastavení šablony
         $this->pohled = 'pojistenci';
