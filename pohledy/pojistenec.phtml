@@ -102,12 +102,12 @@
                                                 <div class="col-md-6">
                                                     <label for="od" class="form-label">Od:</label>
                                                     <input type="date" name="od" class="form-control od" id="od" value="<?php echo date('Y-m-d') ?>" min="<?= date('Y-m-d') ?>" max="<?= $maximalniDatum ?>" required/>
-                                                    <div class="invalid-feedback od_feedback" id="odFeedback"></div>
+                                                    <div class="invalid-feedback od_feedback" id="odFeedback">Zadejte platné datum</div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="do" class="form-label">Do:</label>
                                                     <input type="date" name="do" class="form-control do" id="do" min="<?= date('Y-m-d') ?>" max="<?= $maximalniDatum ?>" data-bs-toggle="tooltip" data-html="true" title="Uveďte, pokud je stanoveno datum ukončení"/>
-                                                    <div class="invalid-feedback do_feedback" id="doFeedback"></div>
+                                                    <div class="invalid-feedback do_feedback" id="doFeedback">Zadejte platné nebo žádné datum</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +218,7 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="do" class="form-label">Do:</label>
                                                                                 <input type="date" name="do" class="form-control od_editace" id="doEditace" value="<?= $pojisteniPojistence['do'] ?>" min="<?= date('Y-m-d') ?>"  max="<?= $maximalniDatum ?>" data-bs-toggle="tooltip" data-html="true" title="Uveďte, pokud je stanoveno datum ukončení"/>
-                                                                                <div class="invalid-feedback do_editace_feedback" id="doEditaceFeedback"></div>
+                                                                                <div class="invalid-feedback do_editace_feedback" id="doEditaceFeedback">Zadejte platné nebo žádné datum</div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
