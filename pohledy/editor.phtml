@@ -68,7 +68,6 @@
         </div>
     </div>
 </div>
-<!-- Modální dialog pro potvrzení uložení -->
 <div class="modal uloz" id="ulozPojistence">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -90,20 +89,8 @@
     </div>
 </div>
 <script>
-    // Volání funkce validaceFormulare()
     document.addEventListener('DOMContentLoaded', function () {
         validaceFormulare();
-
-        // Znemožnění odeslílání formuláře enterem, pokud není zvalidován
-        var formular = document.querySelector('form');
-        formular.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                if (!formular.checkValidity()) {
-                    event.preventDefault(); // Zabraňuje výchozímu chování klávesy Enter
-                    event.stopPropagation();
-                    formular.classList.add('was-validated');
-                }
-            }
-        });
+        neodesilatEnterem();
     });
 </script>
