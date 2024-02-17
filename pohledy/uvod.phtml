@@ -49,19 +49,19 @@
     <div class="card-group text-center">
         <div class="card border mx-3 my-2">
             <div class="card-img-container d-flex justify-content-center align-items-center ">
-                <img class="card-img-top" src="obrazky/brk.png" alt="Brk" style="width: 300px; height: 300px; margin: 20px;">
+                <img class="card-img-top" src="obrazky/brk.png" alt="Brk" style="max-width: 100%; height: auto;">
             </div>
             <div class="card-body">
                 <h4 class="card-title">Zapište se u nás</h4>
                 <p class="card-text">Prostřednictvím svého uživatelského účtu můžete spravovat svá pojištění.</p>
             </div>
-            <div class="card-footer d-flex justify-content-center border-0">
+            <div class="card-footer d-flex justify-content-center-0">
                 <a class="btn tlacitko-info" href="registrace">Registrovat</a>
             </div>
         </div>
         <div class="card border mx-3 my-2">
             <div class="card-img-container d-flex justify-content-center align-items-center">
-                <img class="card-img-top" src="obrazky/obracec.png" alt="Obracec_casu" style="width: 300px; height: 300px; margin: 20px;">
+                <img class="card-img-top" src="obrazky/obracec.png" alt="Obracec_casu" style="max-width: 100%; height: auto;">
             </div>
             <div class="card-body">
                 <h4 class="card-title">Vyberte si pojištění</h4>
@@ -73,7 +73,7 @@
         </div>
         <div class="card border mx-3 my-2">
             <div class="card-img-container d-flex justify-content-center align-items-center">
-                <img class="card-img-top" src="obrazky/koule.png" alt="Koule" style="width: 300px; height: 300px; margin: 20px;">
+                <img class="card-img-top" src="obrazky/koule.png" alt="Koule" style="max-width: 100%; height: auto;">
             </div>
             <div class="card-body">
                 <h4 class="card-title">Máte dotazy?</h4>
@@ -88,33 +88,35 @@
 <?php endif ?>
 <?php if ($uzivatel) : ?>
     <div class="container">
-        <div class="row mt-2">
-            <div class=" col-md-12">
-                <div class="card" style="background-color: rgba(182,44,40,0.3);">
-                    <div class="card-body d-flex ">
-                        <div class="col-md-3 justify-content-start">
-                            <p>Jste přihlášeni jako <?= $uzivatelskeJmeno ?></p>
+        <div class="col-md-12">
+            <div class="card" style="background-color: rgba(182,44,40,0.3);">
+                <div class="card-body d-flex flex-column">
+                    <div class="row col-12 mt-2">
+                        <div class="col-6">
+                            <p class="float-start">Jste přihlášeni jako <?= $uzivatelskeJmeno ?></p>
                         </div>
+                        <div class="col-6">
+                            <p class="float-end">Dnes je <?= $dnes ?></p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
                         <?php if ($admin) : ?>
-                            <div class="col-md-6 d-flex flex-column align-items-center">                      
+                            <div class="col-md-6 d-flex flex-column align-items-center">
                                 <img src="obrazky/uzivatel_admin.png" alt="Admin" style="width: 15%;">
-                                <h1>Nástěnka administrátora</h1>                      
+                                <h1 class="text-center">Nástěnka administrátora</h1>
                             </div>
                         <?php else : ?>
                             <div class="col-md-6 d-flex flex-column align-items-center">
                                 <img src="obrazky/uzivatel2.png" alt="Uživatel" style="width: 15%;">
-                                <h1>Nástěnka uživatele</h1>
+                                <h1 class="text-center">Nástěnka uživatele</h1>
                             </div>
                         <?php endif ?>
-                        <div class="col-md-3 d-flex justify-content-end">
-                            <p>Dnes je  <?= $dnes ?></p>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 d-flex flex-column">
+            <div class="col-lg-4 d-flex flex-column">
                 <?php if ($admin) : ?>
                     <div class="card mt-2" style="background-color: rgba(57,136,58,0.3);">
                         <div class="card-body text-center">
@@ -163,7 +165,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-md-5 d-flex">
+            <div class=" col-lg-5 d-flex">
                 <div class="card mt-2 flex-grow-1" style="background-color: rgba(244,122,2,0.2);">
                     <div class="card-body">
                         <h2 class="card-title">Naše zásady </h2>
@@ -193,7 +195,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex">
+            <div class="col-lg-3 d-flex">
                 <div class="card mt-2 flex-grow-1" style="background-color: rgba(3,132,198,0.3);">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
@@ -212,4 +214,8 @@
             </div>
         </div>
     </div>
-    <?php endif ?>
+    <?php
+
+
+
+ endif ?>
