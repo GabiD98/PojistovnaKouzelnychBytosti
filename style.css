@@ -74,49 +74,11 @@
     background-color: rgba(244,122,2,0.2);
     color: white;
 }
-.ramecek {
-    border: 5px solid black;
-    border-style: ridge;
-}
-/*
- * Paginace
- */
-ul.paginace li {
-    display: inline-block;
-    padding: 4px 10px;
-    border: 1px solid #DDDDDD;
-    margin-left: -1px;
-    text-align: center;
-}
-
-ul.paginace li:hover {
-    background: #fAfAfA;
-}
-
-ul.paginace li.neaktivni {
-    color: #DDDDDD;
-}
-
-ul.paginace li.aktivni {
-    color: white;
-    background: #3b94e0;
-}
-
-ul.paginace a {
-    text-decoration: none;
-}
-
-/*
- * Ostatní
- */
-.centrovany {
-    text-align: center;
-}
 
 .flip-card {
     background-color: transparent;
     width: 400px;
-    height: 400px;
+    height: auto;
     text-align: center;
     perspective: 1000px; /* 3D efekt */
 }
@@ -186,7 +148,11 @@ ul.paginace a {
     background-repeat: no-repeat;
     transform: rotateY(180deg);
 }
-
+.background-cover {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
 
 /*body {
     cursor: none;
