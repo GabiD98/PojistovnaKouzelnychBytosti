@@ -109,25 +109,17 @@ function validaceFormulare() {
 }
 // Zakáže odeslání nezvalidovaného formuláře enterem
 function neodesilatEnterem() {
-    var formularOsobniUdaje = document.getElementById('profilFormular');
-    var formularZmenaHesla = document.getElementById('zmenaHeslaFormular');
+    var formulare = document.querySelectorAll('form');
 
-    formularOsobniUdaje.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            if (!formularOsobniUdaje.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-                formularOsobniUdaje.classList.add('was-validated');
+    formulare.forEach(function(formular) {
+        formular.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                if (!formular.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    formular.classList.add('was-validated');
+                }
             }
-        }
-    });
-    formularZmenaHesla.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            if (!formularZmenaHesla.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-                formularZmenaHesla.classList.add('was-validated');
-            }
-        }
+        });
     });
 }
