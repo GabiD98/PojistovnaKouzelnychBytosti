@@ -23,66 +23,116 @@
                     <?php endforeach ?>
                 <?php endforeach ?>
             </div>
-            <nav class="navbar navbar-expand-md border-bottom container-fluid ">
+            <nav class="navbar navbar-expand-md border-bottom container-fluid">
                 <div>
-                    <a class = "navbar-brand" href = "uvod"/>
-                    <img src="obrazky/logo.png"  class="d-inline-block align-top float-start" width="80" height="80" alt="koule" />
-                    <h1 class="float-start">Pojišťovna</h1>
-                    <small class="float-start">pro kouzelné bytosti</small>
+                    <a class="navbar-brand" href="uvod">
+                        <div class="d-flex align-items-center">
+                            <img src="obrazky/logo.png" class="d-inline-block align-top float-start" width="80" height="80" alt="Logo" />
+                            <div class="ms-3">
+                                <h1 class="m-0">Pojišťovna</h1>
+                                <small class="m-0">pro kouzelné bytosti</small>
+                            </div>
+                        </div>
                     </a>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#obsah-navigacni-listy" aria-controls="obsah-navigacni-listy" aria-expanded="false" aria-label="Rozbalit navigaci">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#obsah-navigacni-listy" aria-controls="obsah-navigacni-listy" aria-expanded="false" aria-label="Rozbalit navigaci">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="container-fluid">
-                    <div class="d-flex flex-row g-0 col-9">
-                        <ul class="nav navbar-expand-md navbar-light">
-                            <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "uvod">Homepage</a></li>
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="obsah-navigacni-listy">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="uvod">
+                                    <button type="button" class="btn tlacitko-navigace">
+                                        Homepage
+                                    </button>
+                                </a>
+                            </li>
                             <?php if ($uzivatel) : ?>
-                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "pojistenci">Pojištěnci</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pojistenci">
+                                        <button type="button" class="btn tlacitko-navigace">
+                                            Pojištenci
+                                        </button>
+                                    </a>
+                                </li>
                             <?php endif ?>
-                            <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "pojisteni">Pojištění</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pojisteni">
+                                    <button type="button" class="btn tlacitko-navigace">
+                                        Pojištění
+                                    </button>
+                                </a>
+                            </li>
                             <?php if (!$uzivatel) : ?>
-                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "kontakt">Kontakt</a></li>
-                                <li class = "nav-item"><a class = "nav-link btn tlacitko-navigace" href = "faq">FAQ</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="kontakt">
+                                        <button type="button" class="btn tlacitko-navigace">
+                                            Kontakt
+                                        </button>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="faq">
+                                        <button type="button" class="btn tlacitko-navigace">
+                                            FAQ
+                                        </button>
+                                    </a>
+                                </li>
                             <?php endif ?>
                         </ul>
-                    </div>
-                    <div class = "d-flex flex-row-reverse col-3">
-                        <ul class = "nav navbar-expand-md navbar-light">
+                        <ul class="navbar-nav">
                             <?php if (!$uzivatel) : ?>
-                                <li class="nav-item"><a class="nav-link btn tlacitko-warning" href="prihlaseni">Přihlásit</a></li>
-                                <li class="nav-item"><a class="nav-link btn tlacitko-success" href="registrace">Registrovat</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="prihlaseni">
+                                        <button type="button" class="btn tlacitko-warning">
+                                            Přihlásit
+                                        </button>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="registrace">
+                                        <button type="button" class="btn tlacitko-success">
+                                            Registrovat
+                                        </button>
+                                    </a>
+                                </li>
                             <?php endif ?>
                             <?php if ($uzivatel) : ?>
-                                <li class="nav-item"><a class="nav-link btn tlacitko-warning" href="profil">Profil</a></li>
-                                <li>
-                                    <button type="button" class="nav-link btn tlacitko-danger" data-bs-toggle="modal" data-bs-target="#odhlas">
-                                        Odhlásit
-                                    </button>
-                                    <div class="modal" id="odhlas">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Potvrzení odhlášení</h4>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    Opravdu se chcete odhlásit?
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal" >
-                                                        Vrátit
-                                                    </button>
-                                                    <button type="button" class="btn tlacitko-danger" data-bs-dismiss="modal" >
-                                                        <a href="profil/odhlasit" style="color: white; text-decoration: none;">Odhlásit</a>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="profil">
+                                        <button type="button" class="btn tlacitko-warning">
+                                            Profil
+                                        </button>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="nav-link">
+                                        <button type="button" class="btn tlacitko-danger" data-bs-toggle="modal" data-bs-target="#odhlas">
+                                            Odhlásit
+                                        </button>
                                     </div>
                                 </li>
-                            <?php endif ?> 
-                        </ul>
+                            </ul>
+                            <div class="modal" id="odhlas">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Potvrzení odhlášení</h4>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            Opravdu se chcete odhlásit?
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                                Vrátit
+                                            </button>
+                                            <a href="profil/odhlasit" class="btn btn-danger" role="button">Odhlásit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
             </nav>
