@@ -107,14 +107,10 @@ abstract class Kontroler
         // Vytvoření instance modelu, který nám umožní pracovat s uživatelem
         $spravceUzivatelu = new SpravceUzivatelu();
         $prihlasenyUzivatel = $spravceUzivatelu->vratUzivatele();
-        if (!$prihlasenyUzivatel) {
+        if (!$prihlasenyUzivatel || !Db::existujeUzivatel($prihlasenyUzivatel['uzivatele_id'])) {
             $this->pridejZpravu('Nedostatečná oprávnění', 'upozorneni');
             $this->presmeruj('uvod');
-        } elseif (!Db::existujeUzivatel($prihlasenyUzivatel['uzivatele_id'])) {
-            $spravceUzivatelu->odhlas();
-            $this->pridejZpravu('Nedostatečná oprávnění', 'upozorneni');
-            $this->presmeruj('uvod');
-        }
+        } 
     }
 
     /**
