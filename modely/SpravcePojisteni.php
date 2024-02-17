@@ -17,12 +17,6 @@ class SpravcePojisteni
             Db::vloz('pojisteni', $pojisteni);
             //Získá ID pojištění
             $id = Db::posledniId();
-            if ($pojisteni['frekvence_platby'] == 'Jednorázově') {
-                $pojisteni['celkem_zaplaceno'] = $pojisteni['castka'];
-                Db::zmen('pojisteni', ['celkem_zaplaceno' => $pojisteni['castka']], 'WHERE pojisteni_id = ?', [$id]);
-            } else {
-                Db::zmen('pojisteni', ['celkem_zaplaceno' => '0'], 'WHERE pojisteni_id = ?', [$id]);
-            }
             //Aktualizuje záznam v databázi s novou hodnotou id
             Db::zmen('pojisteni', ['pojisteni_id' => $id], 'WHERE pojisteni_id = ?', [$id]);
         } catch (PDOException $chyba) {
@@ -49,7 +43,7 @@ class SpravcePojisteni
     public function vratVsechnaPojisteniPojistence(string $url): array|bool
     {
         return Db::dotazVsechny('
-			SELECT `pojisteni_id`, `typ_pojisteni`, `predmet_pojisteni`, `od`, `do`, `castka`, `frekvence_platby`, `celkem_zaplaceno`, `pojistenec_id`
+			SELECT `pojisteni_id`, `typ_pojisteni`, `predmet_pojisteni`, `od`, `do`, `castka`, `frekvence_platby`, `pojistenec_id`
 			FROM `pojisteni` 
                         JOIN `pojistenci` ON `pojisteni`.`pojistenec_id` = `pojistenci`.`url`
                         WHERE `pojistenci`.`url` = ?
@@ -63,7 +57,7 @@ class SpravcePojisteni
     public function vratVsechnaPojisteni(): array
     {
         return Db::dotazVsechny('
-			SELECT `pojisteni_id`, `typ_pojisteni`, `predmet_pojisteni`, `od`, `do`, `castka`, `frekvence_platby`,`celkem_zaplaceno`, `pojistenec_id`
+			SELECT `pojisteni_id`, `typ_pojisteni`, `predmet_pojisteni`, `od`, `do`, `castka`, `frekvence_platby`, `pojistenec_id`
 			FROM `pojisteni` 
 			ORDER BY `pojisteni_id` DESC 
 		');
@@ -95,10 +89,11 @@ class SpravcePojisteni
      * Funkce pro získání nejpozdějšího možného data pro platnost pojištění
      * @return type
      */
-    public function maximalniDatum() 
+    public function maximalniDatum()
     {
         $dnes = new DateTime();
         $dnes->modify('+150 years');
         return $dnes->format('Y-m-d');
     }
+
 }
