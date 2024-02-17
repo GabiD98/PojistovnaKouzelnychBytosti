@@ -75,12 +75,12 @@
                                         </div>
                                         <div>
                                             <?php if ($uzivatel['datum_narozeni'] == "0000-00-00" || $uzivatel['datum_narozeni'] == "0") : ?>
-                                                <h6><label for="datumNarozeniUzivatele" class="mt-3 datum_narozeni">Datum narození</label></h6>
+                                                <h6><label for="datumNarozeniUzivatele" class="mt-3">Datum narození</label></h6>
                                                 <input type="date" name="datum_narozeni" class="form-control" id="datumNarozeniUzivatele" value="<?= $datumNarozeni ?>" data-bs-toggle="tooltip" data-html="true" title="Datum narození po uložení nelze změnit" max="<?= date('Y-m-d') ?>" required/>
                                                 <div class="invalid-feedback">Vyplňte platné datum narození</div>
                                             <?php endif ?>
                                             <?php if ($uzivatel['datum_narozeni'] !== "0000-00-00" && $uzivatel['datum_narozeni'] !== "0") : ?>
-                                                <h6><label class="mt-3">Datum narození</label></h6>
+                                                <h6><label for="datumNarozeniUzivateleDisabled" class="mt-3">Datum narození</label></h6>
                                                 <input type="date" name="datum_narozeni" class="form-control" id="datumNarozeniUzivateleDisabled" value="<?= $uzivatel['datum_narozeni'] ?>" disabled="disabled" data-bs-toggle="tooltip" data-html="true" title="Datum narození nelze změnit" />
                                             <?php endif ?>
                                         </div>
