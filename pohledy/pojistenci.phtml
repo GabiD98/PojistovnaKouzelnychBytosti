@@ -1,26 +1,24 @@
-<h1>Seznam pojištěnců</h1>
-<br/>
+<h1>Seznam pojištěnců</h1><br/>
+<div class="d-flex justify-content-center">
+    <?php if ($admin) : ?>
+        <div class="mt-auto">
+            <a class="btn tlacitko-success m-0" href="editor">Nový pojištěnec</a>
+        </div>
+    <?php endif ?>
+</div>
 <div class="row">
-    <div class="col-9">
-        <!-- Vyhledávací formulář -->
+    <div class="col-m-9">
         <form method="GET" action="">
             <div class="row">
                 <label for="vyhledatFormular">Vyhledat podle jména:</label>
-                <div class="col-4">
+                <div class="col-sm-9 col-md-9 col-lg-6">
                     <input type="text" class="form-control" id="vyhledatFormular" name="vyhledat" placeholder="Zadejte jméno">
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3 col-md-3 col-lg-3">
                     <button type="submit" class="btn tlacitko-info m-0">Vyhledat</button>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="col-3 d-flex flex-column">
-        <?php if ($admin) : ?>
-            <div class="mt-auto">
-                <a class="btn tlacitko-success m-0" href="editor">Přidat nového pojištěnce</a>
-            </div>
-        <?php endif ?>
     </div>
 </div>
 <br/>
@@ -32,7 +30,7 @@ $zaznamuNaStranku = 10;
 $vyhledat = isset($_GET['vyhledat']) ? $_GET['vyhledat'] : '';
 
 // Filtrace pole $pojistenci podle zadaného jména
-$vyhledaniVysledky = array_filter($pojistenci, function($pojistenec) use ($vyhledat) {
+$vyhledaniVysledky = array_filter($pojistenci, function ($pojistenec) use ($vyhledat) {
     // Porovnání jména a příjmení pojištěnce s hledaným výrazem
     return stripos($pojistenec['jmeno'] . ' ' . $pojistenec['prijmeni'], $vyhledat) !== false;
 });
@@ -58,63 +56,63 @@ $pojistenciNaStrance = array_slice($vyhledaniVysledky, $offset, $zaznamuNaStrank
 <?php if (!empty($pojistenciNaStrance)) : ?>
     <table class="table table-striped table-bordered table-hover">
         <thead>
-            <th>Jméno a příjmení</th>
-            <th>Adresa</th>
+        <th>Jméno a příjmení</th>
+        <th>Adresa</th>
+        <?php if ($admin) : ?>
+            <th class="col-3">Úpravy</th>
+        <?php endif ?>
+    </thead>
+    <?php foreach ($pojistenciNaStrance as $pojistenec) : ?>
+        <tr>
+            <td>
+                <h4 class="m-md-1"><a href="pojistenec/<?= $pojistenec['url'] ?>"><?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?></a></h4>
+            </td>
+            <td>
+                <p class="m-md-1"><?= $pojistenec['adresa'] . ", " . $pojistenec['mesto'] . " " . $pojistenec['psc'] ?></p>
+            </td>
             <?php if ($admin) : ?>
-                <th class="col-3">Úpravy</th>
-            <?php endif ?>
-        </thead>
-        <?php foreach ($pojistenciNaStrance as $pojistenec) : ?>
-            <tr>
                 <td>
-                    <h4 class="m-md-1"><a href="pojistenec/<?= $pojistenec['url'] ?>"><?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?></a></h4>
-                </td>
-                <td>
-                    <p class="m-md-1"><?= $pojistenec['adresa'] . ", " . $pojistenec['mesto'] . " " . $pojistenec['psc'] ?></p>
-                </td>
-                <?php if ($admin) : ?>
-                    <td>
-                        <div class="container m-md-1">
-                            <button type="button" class="btn tlacitko-warning">
-                                <a href="editor/<?= $pojistenec['url'] ?>" style="color: white; text-decoration: none;">Editovat</a>
-                            </button>
-                            <button type="button" class="btn tlacitko-danger" data-bs-toggle="modal" data-bs-target="#odstranit<?= $pojistenec['url'] ?>">
-                                Odstranit
-                            </button>
-                        </div>
-                        <div class="modal" id="odstranit<?= $pojistenec['url'] ?>">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Potvrzení odstranění</h4>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        Opravdu si přejete odstranit pojištěnce <?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?>?
-                                    </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal">
-                                            Vrátit
-                                        </button>
-                                        <button type="button" class="btn tlacitko-danger">
-                                            <a href="pojistenec/<?= $pojistenec['url'] ?>/odstranit" style="color: white; text-decoration: none;">Odstranit</a>
-                                        </button>
-                                    </div>
+                    <div class="container m-md-1">
+                        <button type="button" class="btn tlacitko-warning">
+                            <a href="editor/<?= $pojistenec['url'] ?>" style="color: white; text-decoration: none;">Editovat</a>
+                        </button>
+                        <button type="button" class="btn tlacitko-danger" data-bs-toggle="modal" data-bs-target="#odstranit<?= $pojistenec['url'] ?>">
+                            Odstranit
+                        </button>
+                    </div>
+                    <div class="modal" id="odstranit<?= $pojistenec['url'] ?>">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Potvrzení odstranění</h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    Opravdu si přejete odstranit pojištěnce <?= $pojistenec['jmeno'] . " " . $pojistenec['prijmeni'] ?>?
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn tlacitko-success" data-bs-dismiss="modal">
+                                        Vrátit
+                                    </button>
+                                    <button type="button" class="btn tlacitko-danger">
+                                        <a href="pojistenec/<?= $pojistenec['url'] ?>/odstranit" style="color: white; text-decoration: none;">Odstranit</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                <?php endif ?>
-            </tr>
-        <?php endforeach ?>
+                    </div>
+                </td>
+            <?php endif ?>
+        </tr>
+    <?php endforeach ?>
     </table>
-<ul class="pagination">
-    <?php for ($i = 1; $i <= $pocetStranek; $i++) : ?>
-        <?php $active = $i == $stranka ? 'active' : ''; ?>
-        <li class="page-item <?= $active ?>">
-            <a class="page-link" href="<?= strtok($_SERVER["REQUEST_URI"], '?') ?>?stranka=<?= $i ?>"><?= $i ?></a>
-        </li>
-    <?php endfor ?>
-</ul>
+    <ul class="pagination">
+        <?php for ($i = 1; $i <= $pocetStranek; $i++) : ?>
+            <?php $active = $i == $stranka ? 'active' : ''; ?>
+            <li class="page-item <?= $active ?>">
+                <a class="page-link" href="<?= strtok($_SERVER["REQUEST_URI"], '?') ?>?stranka=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor ?>
+    </ul>
 <?php else : ?>
     <p>Nebyly nalezeny žádné záznamy.</p>
 <?php endif ?>
