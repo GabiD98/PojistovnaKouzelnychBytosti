@@ -24,7 +24,7 @@ class PojistenecKontroler extends Kontroler
         $spravcePojisteni = new SpravcePojisteni();
         // Ověření, zda je uživatel přihlášený
         $this->overUzivatele();
-        
+
         // Hlavička stránky
         $this->hlavicka = ['titulek' => $pojistenec['jmeno'] . " " . $pojistenec['prijmeni']];
         $this->hlavicka['popis'] = 'Profil pojištěnce';
@@ -42,7 +42,7 @@ class PojistenecKontroler extends Kontroler
             // Pokud nebyl pojištěnec s danou URL nalezen, přesměrujeme na ChybaKontroler
             if (!$pojistenec) {
                 $this->pridejZpravu('Pojištěnec nebyl nalezen', 'chyba');
-                $this->presmeruj('chyba');
+                $this->presmeruj('pojistenci');
             }
         }
 
@@ -56,11 +56,10 @@ class PojistenecKontroler extends Kontroler
             'castka' => '',
             'frekvence_platby' => '',
             'pojistenec_id' => '',
-            'celkem_zaplaceno' => '',
         ];
         // Přidá nové pojištění
         if ($_POST && empty($_POST['pojisteni_id']) && isset($_POST['pojistenec_id'])) {
-            $klice = ['typ_pojisteni', 'predmet_pojisteni', 'od', 'do', 'castka', 'frekvence_platby', 'pojistenec_id', 'celkem_zaplaceno'];
+            $klice = ['typ_pojisteni', 'predmet_pojisteni', 'od', 'do', 'castka', 'frekvence_platby', 'pojistenec_id'];
             $pojisteni = array_intersect_key($_POST, array_flip($klice));
             $spravcePojisteni->pridejPojisteni($pojisteni);
             $this->pridejZpravu('Bylo přidáno nové pojištění', 'uspech');
@@ -79,7 +78,7 @@ class PojistenecKontroler extends Kontroler
             // Edituje pojištění
         } elseif ($_POST && !empty($_POST['pojisteni_id'])) {
             try {
-                $klice = ['pojisteni_id', 'typ_pojisteni', 'predmet_pojisteni', 'od', 'do', 'castka', 'frekvence_platby', 'pojistenec_id', 'celkem_zaplaceno'];
+                $klice = ['pojisteni_id', 'typ_pojisteni', 'predmet_pojisteni', 'od', 'do', 'castka', 'frekvence_platby', 'pojistenec_id'];
                 $pojisteniPojistence = array_intersect_key($_POST, array_flip($klice));
                 $spravcePojisteni->upravPojisteni($_POST['pojisteni_id'], $pojisteniPojistence);
                 $this->pridejZpravu('Údaje o pojištění byly změněny', 'uspech');
@@ -114,6 +113,7 @@ class PojistenecKontroler extends Kontroler
         $this->data['mesto'] = $pojistenec['mesto'];
         $this->data['psc'] = $pojistenec['psc'];
         $this->data['url'] = $pojistenec['url'];
+
         $this->data['pojisteni'] = $pojisteniPojistence;
         $this->data['typPojisteni'] = $pojisteni['typ_pojisteni'];
         $this->data['predmetPojisteni'] = $pojisteni['predmet_pojisteni'];
@@ -121,7 +121,7 @@ class PojistenecKontroler extends Kontroler
         $this->data['do'] = $pojisteni['do'];
         $this->data['castka'] = $pojisteni['castka'];
         $this->data['frekvencePlatby'] = $pojisteni['frekvence_platby'];
-        $this->data['celkemZaplaceno'] = $pojisteni['celkem_zaplaceno'];
+        
         $vek = $this->vypocitejVek($pojistenec['datum_narozeni']);
         $this->data['vek'] = $vek;
         $maximalniDatum = $spravcePojisteni->maximalniDatum();
