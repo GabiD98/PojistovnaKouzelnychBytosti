@@ -65,13 +65,13 @@
                                     <div>
                                         <div>
                                             <h6><label for="jmenoUzivatele" class="mt-3">Jméno</label></h6>
-                                            <input type="text" name="jmeno" class="form-control" id="jmenoUzivatele" value="<?= $jmeno ?>" maxlength="60" required/>
-                                            <div class="invalid-feedback">Vyplňte křestní jméno</div>
+                                            <input type="text" name="jmeno" class="form-control" id="jmenoUzivatele" value="<?= $jmeno ?>" maxlength="60" required pattern="[A-Za-zÁáČčĎďÉéĚěÍíŇňÓóŘřŠšŤťÚúŮůÝýŽž]+"/>
+                                            <div class="invalid-feedback">Vyplňte platné jméno bez čísel a speciálních znaků</div>
                                         </div>
                                         <div>
                                             <h6><label for="prijmeniUzivatele" class="mt-3">Příjmení</label></h6>
-                                            <input type="text" name="prijmeni" class="form-control" id="prijmeniUzivatele" value="<?= $prijmeni ?>" maxlength="60" required/>
-                                            <div class="invalid-feedback">Vyplňte příjmení</div>
+                                            <input type="text" name="prijmeni" class="form-control" id="prijmeniUzivatele" value="<?= $prijmeni ?>" maxlength="60" required pattern="[A-Za-zÁáČčĎďÉéĚěÍíŇňÓóŘřŠšŤťÚúŮůÝýŽž]+"/>
+                                            <div class="invalid-feedback">Vyplňte platné příjmení bez čísel a speciálních znaků</div>
                                         </div>
                                         <div>
                                             <?php if ($uzivatel['datum_narozeni'] == "0000-00-00" || $uzivatel['datum_narozeni'] == "0") : ?>
