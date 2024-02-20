@@ -21,6 +21,8 @@
             <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/rozlozeni.phtml</file>
             <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/pojistenci.phtml</file>
         </group>
-        <group name="Pojisteni"/>
+        <group name="Pojisteni">
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/rozlozeni.phtml</file>
+        </group>
     </open-files>
 </project-private>
