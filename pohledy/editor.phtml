@@ -1,20 +1,20 @@
 <div class="container">
-<div class="row">
-    <div class="d-flex justify-content-center">
-        <div class="col-sm-3 col-md-2 col-xl-1">
-            <img src="obrazky/hulka.png" alt="Hůlka"  style="max-width: 100%; height: auto;"/>
-        </div>
-        <div class="col-sm-9">
-            <h1>Editor pojištěnců</h1>
-            <?php if (isset($pojistenecId) && $pojistenecId) : ?>
-                <h5>Upravte osobní údaje pojištěnce <?= $jmeno . " " . $prijmeni ?> </h5><br>
-            <?php endif ?>
-            <?php if (!isset($pojistenecId) || !$pojistenecId) : ?>
-                <h5>Založte nový účet pojištěnce</h5><br>
-            <?php endif ?>
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <div class="col-sm-3 col-md-2 col-xl-1">
+                <img src="obrazky/hulka.png" alt="Hůlka"  style="max-width: 100%; height: auto;"/>
+            </div>
+            <div class="col-sm-9">
+                <h1>Editor pojištěnců</h1>
+                <?php if (isset($pojistenecId) && $pojistenecId) : ?>
+                    <h5>Upravte osobní údaje pojištěnce <?= $jmeno . " " . $prijmeni ?> </h5><br>
+                <?php endif ?>
+                <?php if (!isset($pojistenecId) || !$pojistenecId) : ?>
+                    <h5>Založte nový účet pojištěnce</h5><br>
+                <?php endif ?>
+            </div>
         </div>
     </div>
-</div>
     <div class="row">
         <div class="d-flex justify-content-center">
             <form method="post" class="needs-validation" novalidate id="editacniFormular">
@@ -23,12 +23,12 @@
                         <input type="hidden" name="pojistenci_id" value="<?= $pojistenecId ?>" />
                         <h5>Jméno a narození</h5>
                         <div>
-                            <input type="text" name="jmeno" class="form-control mt-1" id="jmenoPojistence" value="<?= $jmeno ?>" placeholder="Křestní jméno" maxlength="60" required/>
-                            <div class="invalid-feedback">Vyplňte křestní jméno</div>
+                            <input type="text" name="jmeno" class="form-control mt-1" id="jmenoPojistence" value="<?= $jmeno ?>" placeholder="Křestní jméno" maxlength="60" required pattern="[A-Za-zÁáČčĎďÉéĚěÍíŇňÓóŘřŠšŤťÚúŮůÝýŽž]+"/>
+                            <div class="invalid-feedback">Vyplňte platné jméno bez čísel a speciálních znaků</div>
                         </div>
                         <div>
-                            <input type="text" name="prijmeni" class="form-control mt-1" id="prijmeniPojistence" value="<?= $prijmeni ?>" placeholder="Příjmení" maxlength="60" required/>
-                            <div class="invalid-feedback">Vyplňte příjmení</div>
+                            <input type="text" name="prijmeni" class="form-control mt-1" id="prijmeniPojistence" value="<?= $prijmeni ?>" placeholder="Příjmení" maxlength="60" required pattern="[A-Za-zÁáČčĎďÉéĚěÍíŇňÓóŘřŠšŤťÚúŮůÝýŽž]+"/>
+                            <div class="invalid-feedback">Vyplňte platné příjmení bez čísel a speciálních znaků</div>
                         </div>
                         <div>
                             <input type="date" name="datum_narozeni" class="form-control mt-1" id="datumNarozeniPojistence" value="<?= $datumNarozeni ?>" max="<?= date('Y-m-d') ?>" required/>
