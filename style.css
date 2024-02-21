@@ -154,12 +154,10 @@
     overflow: hidden;
 }
 
-/*body {
+body {
     cursor: none;
 }
-*/
 
-/*
 .custom-cursor {
     width: 60px;
     height: 60px;
@@ -171,4 +169,3 @@
     pointer-events: none;
     transform: translate(0, 0);
 }
-*/
