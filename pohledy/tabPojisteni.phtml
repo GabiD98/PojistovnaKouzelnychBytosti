@@ -147,7 +147,8 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="od" class="form-label">Od:</label>
-                                                                    <input type="date" name="od" class="form-control od_editace" id="odEditace" value="<?= $pojisteniPojistence['od'] ?>" disabled="disabled"/>
+                                                                    <input type="hidden" name="od" id="odEditace" value="<?= $pojisteniPojistence['od'] ?>"/>
+                                                                    <input type="date" name="od_disabled" class="form-control od_editace" id="odEditaceDisabled" value="<?= $pojisteniPojistence['od'] ?>" disabled="disabled"/>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="do" class="form-label">Do:</label>
@@ -222,5 +223,30 @@
     document.addEventListener('DOMContentLoaded', function () {
         podminkyPojisteni();
         validaceFormulare();
+
+        // Funkce pro validaci dat při odeslání formuláře pro přidání pojištění
+        document.getElementById('novePojisteniFormular').addEventListener('submit', function (event) {
+            var odDatum = new Date(document.getElementById('od').value);
+            var doDatum = new Date(document.getElementById('do').value);
+
+            if (odDatum > doDatum) {
+                document.getElementById('do').classList.add('is-invalid');
+                document.getElementById('doFeedback').innerText = 'Konec platnosti nemůže nastat dřív, než začátek';
+                event.preventDefault(); // Zastaví odeslání formuláře
+            }
+        });
+
+        // Funkce pro validaci dat při odeslání formuláře pro úpravu pojištění
+        document.getElementById('editacePojisteniFormular').addEventListener('submit', function (event) {
+            var odDatumEditaceString = document.getElementById('odEditace').value; // Textový řetězec
+            var odDatumEditace = new Date(odDatumEditaceString); // Převod na objekt typu Date
+            var doDatumEditace = new Date(document.getElementById('doEditace').value);
+
+            if (odDatumEditace > doDatumEditace) {
+                document.getElementById('doEditace').classList.add('is-invalid');
+                document.getElementById('doEditaceFeedback').innerText = 'Konec platnosti nemůže nastat dřív, než začátek';
+                event.preventDefault(); // Zastaví odeslání formuláře
+            }
+        });
     });
 </script>
