@@ -154,6 +154,7 @@
     overflow: hidden;
 }
 
+/*
 body {
     cursor: none;
 }
@@ -169,3 +170,5 @@ body {
     pointer-events: none;
     transform: translate(0, 0);
 }
+*/
+
