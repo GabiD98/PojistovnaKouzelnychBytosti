@@ -23,6 +23,8 @@
         </group>
         <group name="Pojisteni">
             <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/rozlozeni.phtml</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/pojistenec.phtml</file>
+            <file>file:/C:/xampp/htdocs/Pojisteni/pohledy/kontakt.phtml</file>
         </group>
     </open-files>
 </project-private>
