@@ -36,6 +36,5 @@
 <strong>Plánované implementace:</strong>
 <ul>
   <li>připojení pojistné události k pojištěnci za využití jeho pojištění,</li>
-  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé,</li>
-  <li>znemožnění zadání data ukončení platnosti pojištění, které by bylo menší než začátek platnosti.</li>
+  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé.</li>
 </ul>
