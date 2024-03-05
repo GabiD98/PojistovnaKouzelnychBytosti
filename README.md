@@ -11,8 +11,8 @@
   </li></br>   
   <li><strong>Konfigurace připojení k databázi</strong>
     <ul>
-      <li>Otevřete soubor config.php.</li>
-      <li>Upravte údaje pro připojení k databázi (DB_HOST, DB_USER, DB_PASS, DB_NAME) podle vašeho nastavení.</li>
+      <li>Otevřete soubor index.php.</li>
+      <li>Upravte údaje pro připojení k databázi (parametry funkce Db::pripoj) podle vašeho nastavení.</li>
     </ul>
   </li></br>
   <li><strong>Spusťte aplikaci.</strong></br>Otevřete aplikaci ve webovém prohlížeči.</li>
@@ -35,7 +35,6 @@
 <h3>Dodatek</h3>
 <strong>Plánované implementace:</strong>
 <ul>
-  <li>připojení pojistné události k pojištěnci za využití jeho pojištění,</li>
-  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé,</li>
-  <li>znemožnění zadání data ukončení platnosti pojištění, které by bylo menší než začátek platnosti.</li>
+  <li>připojení pojistné události k pojištěnci za využití jeho pojištění</li>
+  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé</li>
 </ul>

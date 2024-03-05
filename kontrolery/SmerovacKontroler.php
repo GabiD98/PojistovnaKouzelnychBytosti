@@ -71,8 +71,8 @@ class SmerovacKontroler extends Kontroler
     }
 
     /**
-     * Převede název kontroleru s pomlčkami (kebab case) na název třídy (camelCase)
-     * @param string $text Řetězec v kebab case
+     * Převede název kontroleru s pomlčkami (kebab-case) na název třídy (camelCase)
+     * @param string $text Řetězec v kebab-case
      * @return string
      */
     private function pomlckyDoVelbloudiNotace(string $text): string
