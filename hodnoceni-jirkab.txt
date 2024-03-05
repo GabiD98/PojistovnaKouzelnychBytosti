@@ -1,0 +1,14 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - hodně různorodé dané trochu i různými technologiemi, ale např. funkce jsou lépe pojmenované v PHP obecně, o něco hůř v Db třídě a v JS
+2. Dodržení principů SRP a SoC - hezká MVC aplikace
+3. Vhodný výběr datových typů - ok
+4. Formátování kódu - ok
+5. Duplicitní kód a nekonečné cykly - zdá se, že css z velké části kopíruje obdobné styly bootstrapu, který se také používá, takže by to šlo zjednodušit
+6. Validace vstupních dat - provádí se
+7. Logičnost a složitost - určité nekonzistence se najdou. Např. i Readme odkazuje na soubor Config.php včetně db připojení, ale nikde se nepoužívá, údaje jsou v index.php napevno.
+Celkově je ideální, pokud jedna informace je na jednom místě, aby též na jednom místě šla později změnit. To není vždy jednoduché dosáhnout.
+8. Komentáře - jsou
+9. Celkové hodnocení - moc hezké MVC s trochou kreativity navíc mimo samotný program
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!

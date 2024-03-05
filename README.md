@@ -35,6 +35,6 @@
 <h3>Dodatek</h3>
 <strong>Plánované implementace:</strong>
 <ul>
-  <li>připojení pojistné události k pojištěnci za využití jeho pojištění</li>
-  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé</li>
+  <li>připojení pojistné události k pojištěnci za využití jeho pojištění,</li>
+  <li>možnost pro pojištěnce spravovat svůj profil a svá pojištění coby uživatelé.</li>
 </ul>
